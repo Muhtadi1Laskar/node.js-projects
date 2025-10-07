@@ -12,6 +12,17 @@ function encrypt(text, cipherKey) {
     return iv.toString("hex") + ":" + encrypted.toString("hex");
 }
 
+function decrypt(data, cipherKey) {
+    const key = generateKey(cipherKey);
+    const [ivHex, encryptedHex] = data.split(":");
+    const iv = Buffer.from(ivHex, "hex");
+    const encrypted = Buffer.from(encryptedHex, "hex");
+    const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
+    const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]);
+    return decrypted.toString("utf8");
+}
+
 export {
-    encrypt
+    encrypt, 
+    decrypt
 };

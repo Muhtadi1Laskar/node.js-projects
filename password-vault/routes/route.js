@@ -1,5 +1,5 @@
 import { parseReqBody, writeResponse } from "../Common/common.js";
-import { encrypt } from "../password-manager/password.js";
+import { decrypt, encrypt } from "../password-manager/password.js";
 
 const routes = [
     {
@@ -21,6 +21,8 @@ const routes = [
         path: '/password/retrive',
         handler: async (req, res) => {
             const data = await parseReqBody(req);
+            const decryptedPassword = decrypt(data.hex);
+            writeResponse(res, { "password": decryptedPassword });
         }
     }
 
