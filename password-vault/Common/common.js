@@ -36,7 +36,13 @@ const parseReqBody = (req) => {
     });
 }
 
+const writeResponse = (res, data) => {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify(data));
+}
+
 export {
     matchRoute,
-    parseReqBody
+    parseReqBody,
+    writeResponse
 }
