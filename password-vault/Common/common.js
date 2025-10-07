@@ -44,7 +44,6 @@ const writeResponse = (res, data) => {
     res.end(JSON.stringify(data));
 }
 
-
 const writeJSON = async (data) => {
     const fullPath = path.join("Data", "savedPassword.json");
     try {
@@ -67,9 +66,20 @@ const writeJSON = async (data) => {
     }
 }
 
+const readJSON = async () => {
+    const fullPath = path.join("Data", "savedPassword.json");
+    try {
+        const dataString = await fs.readFile(fullPath, 'utf-8');
+        return JSON.parse(dataString);
+    } catch (error) {
+        console.error('Fatal error appending to JSON file:', error);
+    }
+}
+
 export {
     matchRoute,
     parseReqBody,
     writeResponse,
-    writeJSON
+    writeJSON, 
+    readJSON
 };

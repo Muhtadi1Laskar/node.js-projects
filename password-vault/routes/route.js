@@ -1,6 +1,6 @@
 import { parseReqBody, writeResponse } from "../Common/common.js";
+import readPasswordController from "../Controllers/read-controllers.js";
 import savePasswordController from "../Controllers/save-controllers.js";
-import { decrypt, encrypt } from "../password-manager/password.js";
 
 const routes = [
     {
@@ -18,11 +18,9 @@ const routes = [
     },
     {
         method: 'GET',
-        path: '/password/retrive',
+        path: '/password/retrive/all',
         handler: async (req, res) => {
-            const data = await parseReqBody(req);
-            const decryptedPassword = decrypt(data.hex);
-            writeResponse(res, { "password": decryptedPassword });
+            await readPasswordController(res);
         }
     }
 
