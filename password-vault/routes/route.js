@@ -1,4 +1,5 @@
 import { parseReqBody, writeResponse } from "../Common/common.js";
+import { encrypt } from "../password-manager/password.js";
 
 const routes = [
     {
@@ -7,11 +8,19 @@ const routes = [
         handler: async (req, res) => (writeResponse(res, "Welcome to Password Vault"))
     },
     {
-        method: 'GET',
-        path: '/password/names',
+        method: 'POST',
+        path: '/password/add',
         handler: async (req, res) => {
             const data = await parseReqBody(req);
-            writeResponse(res, data);
+            const encryptedPassword = encrypt(data.password, data.key);
+            writeResponse(res, { "hex": encryptedPassword });
+        }
+    },
+    {
+        method: 'GET',
+        path: '/password/retrive',
+        handler: async (req, res) => {
+            const data = await parseReqBody(req);
         }
     }
 
