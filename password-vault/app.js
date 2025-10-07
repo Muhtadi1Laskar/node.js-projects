@@ -9,14 +9,12 @@ const server = createServer(async (req, res) => {
     const parsedURL = new URL(req.url, `http://${req.headers.host}`);
     const route = routes.find(r => r.method === req.method && matchRoute(parsedURL.pathname, r.path));
 
-    if (!route) {
-        res.writeHead(404, { 'content-type': 'application/json' });
-        return res.end(JSON.stringify({ error: 'Not Found' }));
+    if(route) {
+        await route.handler(req, res);
+    } else {
+        res.statusCode = 404;
+        res.end("Not Found");
     }
-
-    const params = matchRoute(parsedURL.pathname, route.path);
-    const result = route.handler(req, res, params);
-
 });
 
 server.listen(PORT, () => {
