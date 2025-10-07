@@ -1,0 +1,16 @@
+{
+  "name": "password-vault",
+  "version": "1.0.0",
+  "description": "A simple app to manage password",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js"
+  },
+  "author": "muhtadi laskar",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
