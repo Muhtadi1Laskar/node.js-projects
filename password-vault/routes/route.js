@@ -1,4 +1,4 @@
-import { parseReqBody, writePassword, writeResponse } from "../Common/common.js";
+import { parseReqBody, writeResponse } from "../Common/common.js";
 import savePasswordController from "../Controllers/save-controllers.js";
 import { decrypt, encrypt } from "../password-manager/password.js";
 

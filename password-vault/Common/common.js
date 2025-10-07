@@ -1,4 +1,4 @@
-import { writeFile } from "fs/promises";
+import fs from "fs/promises";
 import path from "path";
 
 const matchRoute = (urlPath, routePath) => {
@@ -44,14 +44,26 @@ const writeResponse = (res, data) => {
     res.end(JSON.stringify(data));
 }
 
-const writePassword = async (data) => {
-    console.log(data);
+
+const writeJSON = async (data) => {
     const fullPath = path.join("Data", "savedPassword.json");
     try {
-        await writeFile(fullPath, data);
-        console.log("Successfully saved the password");
+        let currentData = [];
+        const dataString = await fs.readFile(fullPath, 'utf-8');
+        currentData = JSON.parse(dataString);
+
+        if (!Array.isArray(currentData)) {
+            console.warn('Existing file is not an array. Overwriting with new array.');
+            currentData = [];
+        }
+
+        currentData.push(data);
+
+        const updatedDataString = JSON.stringify(currentData, null, 2);
+
+        await fs.writeFile(fullPath, updatedDataString, 'utf-8');
     } catch (error) {
-        console.error("Error writing file: ", error);
+        console.error('Fatal error appending to JSON file:', error);
     }
 }
 
@@ -59,5 +71,5 @@ export {
     matchRoute,
     parseReqBody,
     writeResponse,
-    writePassword
+    writeJSON
 };

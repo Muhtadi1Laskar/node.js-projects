@@ -1,5 +1,5 @@
 import { encrypt } from "../password-manager/password.js";
-import { writePassword, writeResponse } from "../Common/common.js";
+import { writeJSON, writeResponse } from "../Common/common.js";
 
 export default async function savePasswordController(data, res) {
 	const { site, username, password } = data;
@@ -15,7 +15,7 @@ export default async function savePasswordController(data, res) {
         password: encryptedData
     };
     
-    await writePassword(JSON.stringify(finalData));
+    await writeJSON(finalData);
 
     writeResponse(res, { hex: encryptedData });
 }
