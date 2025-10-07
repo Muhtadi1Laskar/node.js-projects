@@ -1,3 +1,6 @@
+import { writeFile } from "fs/promises";
+import path from "path";
+
 const matchRoute = (urlPath, routePath) => {
     const urlParts = urlPath.split('/').filter(Boolean);
     const routeParts = routePath.split('/').filter(Boolean);
@@ -41,8 +44,20 @@ const writeResponse = (res, data) => {
     res.end(JSON.stringify(data));
 }
 
+const writePassword = async (data) => {
+    console.log(data);
+    const fullPath = path.join("Data", "savedPassword.json");
+    try {
+        await writeFile(fullPath, data);
+        console.log("Successfully saved the password");
+    } catch (error) {
+        console.error("Error writing file: ", error);
+    }
+}
+
 export {
     matchRoute,
     parseReqBody,
-    writeResponse
+    writeResponse,
+    writePassword
 };

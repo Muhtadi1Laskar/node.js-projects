@@ -1,11 +1,11 @@
 import crypto from "node:crypto";
 
-function generateKey(key) {
+function generateKey() {
     return crypto.pbkdf2Sync("MASTERPASSWORD", "vault-salt", 100000, 32, "sha256");
 }
 
 function encrypt(text, cipherKey) {
-    const key = generateKey(cipherKey);
+    const key = generateKey();
     const iv = crypto.randomBytes(16);
     const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
     const encrypted = Buffer.concat([cipher.update(text, "utf8"), cipher.final()]);
@@ -13,7 +13,7 @@ function encrypt(text, cipherKey) {
 }
 
 function decrypt(data, cipherKey) {
-    const key = generateKey(cipherKey);
+    const key = generateKey();
     const [ivHex, encryptedHex] = data.split(":");
     const iv = Buffer.from(ivHex, "hex");
     const encrypted = Buffer.from(encryptedHex, "hex");
@@ -23,6 +23,6 @@ function decrypt(data, cipherKey) {
 }
 
 export {
-    encrypt, 
+    encrypt,
     decrypt
 };
