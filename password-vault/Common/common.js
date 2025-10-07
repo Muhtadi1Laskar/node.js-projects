@@ -27,7 +27,7 @@ const parseReqBody = (req) => {
         req.on('end', () => {
             try {
                 const data = JSON.parse(body);
-                resolve(data)
+                resolve(data);
             } catch (error) {
                 resolve(body);
             }
@@ -45,4 +45,4 @@ export {
     matchRoute,
     parseReqBody,
     writeResponse
-}
+};

@@ -4,7 +4,6 @@ import { matchRoute } from "./Common/common.js";
 
 const PORT = process.env.PORT || 8080;
 
-
 const server = createServer(async (req, res) => {
     const parsedURL = new URL(req.url, `http://${req.headers.host}`);
     const route = routes.find(r => r.method === req.method && matchRoute(parsedURL.pathname, r.path));
