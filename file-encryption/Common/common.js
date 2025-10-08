@@ -8,7 +8,6 @@ function parseMultipart(req, boundary) {
 
         req.on("end", () => {
             const parts = data.split(`--${boundary}`);
-            console.log(parts[0]);
             for (const part of parts) {
                 if (part.includes("Content-Disposition")) {
                     const match = part.match(/name="([^"]+)"; filename="([^"]+)"/);
