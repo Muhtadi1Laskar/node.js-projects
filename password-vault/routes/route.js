@@ -6,7 +6,9 @@ const routes = [
     {
         method: 'GET',
         path: '/',
-        handler: async (req, res) => (writeResponse(res, "Welcome to Password Vault"))
+        handler: async (req, res) => {
+            writeResponse(res, { message: "Welcome to Password Vault" });
+        }
     },
     {
         method: 'POST',
