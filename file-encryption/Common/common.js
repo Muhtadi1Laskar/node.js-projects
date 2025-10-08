@@ -1,16 +1,27 @@
-const readFile = (req) => {
-    return new Promise((reject, resolve) => {
-        let body = '';
+function parseMultipart(req, boundary) {
+    return new Promise((resolve, reject) => {
+        let data = "";
 
         req.on("data", chunk => {
-            body += chunk.toString();
+            data += chunk.toString("binary");
         });
 
         req.on("end", () => {
-            resolve(body);
+            const parts = data.split(`--${boundary}`);
+            console.log(parts[0]);
+            for (const part of parts) {
+                if (part.includes("Content-Disposition")) {
+                    const match = part.match(/name="([^"]+)"; filename="([^"]+)"/);
+                    if (match) {
+                        const fileContent = part.split("\r\n\r\n")[1].split("\r\n--")[0];
+                        return resolve(fileContent);
+                    }
+                }
+            }
+            resolve(null);
         });
 
-        req.on("error", reject)
+        req.on("error", reject);
     });
 }
 
@@ -31,7 +42,7 @@ const matchRoute = (URlpath, routePath) => {
         if (routePart.startsWith(':')) {
             const key = routePart.slice(1);
             if (key.length === 0) {
-                return null; 
+                return null;
             }
             params[key] = urlPart;
         } else if (routePart !== urlPart) {
@@ -47,7 +58,7 @@ const writeResponse = (res, data) => {
 }
 
 export {
-    readFile,
+    parseMultipart,
     matchRoute,
     writeResponse
 };
