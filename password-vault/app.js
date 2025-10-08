@@ -8,7 +8,7 @@ const server = createServer(async (req, res) => {
     const parsedURL = new URL(req.url, `http://${req.headers.host}`);
     const route = routes.find(r => r.method === req.method && matchRoute(parsedURL.pathname, r.path));
 
-    if(route) {
+    if (route) {
         await route.handler(req, res);
     } else {
         res.statusCode = 404;
