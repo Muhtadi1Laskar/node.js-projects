@@ -5,12 +5,9 @@ const hashData = (data, algorithm) => {
         if (!data) {
             return "No data provided for hashing";
         }
-        const hashFunction = crypto.createHash(algorithm);
-
-        hashFunction.update(data);
-
-        const hashDigest = hashFunction.digest("hex");
-        return hashDigest;
+        return crypto.createHash(algorithm)
+            .update(data)
+            .digest("hex");
     } catch (error) {
         return error.message;
     }
