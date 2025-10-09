@@ -1,11 +1,21 @@
 import { createServer } from "node:http";
+import getRoute from "./Routes/get.js";
+import postRoute from "./Routes/post.js";
 
 const PORT = process.env.PORT || 8080;
 
 const server = createServer(async (req, res) => {
-    res.statusCode = 200;
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end({ message: "Hello World" });
+    console.log(req.method);
+    switch(req.method) {
+        case "GET":
+
+            break;
+        case "POST":
+            await postRoute(req, res);
+            break;
+        default:
+            break;
+    }
 });
 
 server.listen(PORT, () => {
