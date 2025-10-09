@@ -1,4 +1,4 @@
-import { encodeData } from "../Cryptography/encoder.js";
+import { decodeData, encodeData } from "../Cryptography/encoder.js";
 import { writeResponse } from "../Common/common.js";
 
 async function encodeController(res, reqBody) {
@@ -11,7 +11,12 @@ async function encodeController(res, reqBody) {
 }
 
 async function decodeController(res, reqBody) {
-    
+    const { data } = reqBody;
+    const decodedStr = decodeData(data);
+
+    writeResponse(res, {
+        decodedString: decodedStr
+    });
 }
 
 export {
