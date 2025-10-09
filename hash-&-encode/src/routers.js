@@ -1,6 +1,7 @@
 import { getListController, hashController } from "./Controllers/hash-controller.js";
 import { hmacController } from "./Controllers/hmac-controller.js";
 import hashSchema from "./Schema/hashSchema.js";
+import hmacSchema from "./Schema/hmacSchema.js";
 
 const routes = {
     "GET:/hash/list": {
@@ -13,7 +14,7 @@ const routes = {
     },
     "POST:/hmac": {
         controller: hmacController,
-        // schema: hmacSchema
+        schema: hmacSchema
     }
 };
 

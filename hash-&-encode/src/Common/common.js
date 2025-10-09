@@ -34,9 +34,7 @@ const validateRequestBody = (body, schema) => {
         const actualType = typeof parsed[key];
 
         if (actualType !== expectedType) {
-            errors.push(`
-                Field '${key}' should be of type '${expectedType}', got '${actualType}'
-            `);
+            errors.push(`Field '${key}' should be of type '${expectedType}', got '${actualType}'`);
         }
     }
 
