@@ -1,5 +1,5 @@
-const encodedSchema = {
+const encoderSchema = {
     data: "string"
 };
 
-export default encodedSchema;
+export default encoderSchema;
