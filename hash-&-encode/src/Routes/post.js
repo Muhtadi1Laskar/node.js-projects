@@ -1,4 +1,4 @@
-import { parseResponse } from "../Common/common.js";
+import { parseResponse, writeResponse } from "../Common/common.js";
 import { hashController } from "../Controllers/hash-controller.js";
 
 export default async function postRoute(req, res) {
@@ -10,6 +10,7 @@ export default async function postRoute(req, res) {
         case "/encoding":
             break;
         default:
+            writeResponse(res, { message: "Invalid endpoint" });
             break;
     }
 }
