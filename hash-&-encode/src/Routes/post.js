@@ -1,5 +1,5 @@
 import { parseResponse } from "../Common/common.js";
-import hashController from "../Controllers/hash-controller.js";
+import { hashController } from "../Controllers/hash-controller.js";
 
 export default async function postRoute(req, res) {
     switch (req.url) {
