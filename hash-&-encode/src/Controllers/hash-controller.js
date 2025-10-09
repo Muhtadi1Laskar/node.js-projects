@@ -69,6 +69,6 @@ function getListController(res) {
 }
 
 export {
-    hashController, 
+    hashController,
     getListController
 };

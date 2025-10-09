@@ -5,7 +5,7 @@ import postRoute from "./Routes/post.js";
 const PORT = process.env.PORT || 8080;
 
 const server = createServer(async (req, res) => {
-    switch(req.method) {
+    switch (req.method) {
         case "GET":
             await getRoute(req, res);
             break;
