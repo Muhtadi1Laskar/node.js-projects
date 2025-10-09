@@ -2,11 +2,11 @@ const encoderSchema = {
     data: "string"
 };
 
-const decoderSchem = {
+const decodeSchema = {
     data: "string"
 };
 
 export {
     encoderSchema,
-    decoderSchem
+    decodeSchema
 };
