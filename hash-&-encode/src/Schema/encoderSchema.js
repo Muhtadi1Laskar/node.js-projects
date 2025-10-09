@@ -2,4 +2,11 @@ const encoderSchema = {
     data: "string"
 };
 
-export default encoderSchema;
+const decoderSchem = {
+    data: "string"
+};
+
+export {
+    encoderSchema,
+    decoderSchem
+};
