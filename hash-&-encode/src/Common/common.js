@@ -1,4 +1,4 @@
-const parseResponse = (req) => {
+const parseRequest = (req) => {
     return new Promise((resolve, reject) => {
         let data = '';
 
@@ -21,6 +21,6 @@ const writeResponse = (res, data) => {
 }
 
 export {
-    parseResponse,
+    parseRequest,
     writeResponse
 };

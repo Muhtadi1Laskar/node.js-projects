@@ -2,7 +2,7 @@ import { writeResponse } from "../Common/common.js";
 import hashData from "../Cryptography/hashData.js";
 
 async function hashController(res, reqBody) {
-    const { hash, message } = JSON.parse(reqBody);
+    const { hash, message } = JSON.parse(reqBody || {});
     const hashedData = hashData(message, hash);
     const response = {
         hash: hashedData
