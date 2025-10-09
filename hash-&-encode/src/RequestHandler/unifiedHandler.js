@@ -1,12 +1,12 @@
-import { parseRequest, writeResponse } from "../Common/common.js";
+import { parseRequest, validateRequestBody, writeResponse } from "../Common/common.js";
 import routes from "../routers.js";
 
 export default async function unifiedHandler(req, res) {
     const { method, url } = req;
     const endpoint = `${method}:${url}`;
-    const controller = routes[endpoint];
+    const route = routes[endpoint];
 
-    if (!controller) {
+    if (!route.controller) {
         writeResponse(res, {
             message: "Route not found"
         });
@@ -16,11 +16,18 @@ export default async function unifiedHandler(req, res) {
     let reqBody = '';
     if (method === "POST" || method === "DELETE") {
         const rawReqBody = await parseRequest(req);
+        const { valid, message } = validateRequestBody(rawReqBody, route.schema);
+
+        if (!valid) {
+            writeResponse(res, { message });
+            return;
+        }
+
         reqBody = JSON.parse(rawReqBody || {});
     }
 
     try {
-        await controller(res, reqBody);
+        await route.controller(res, reqBody);
     } catch (error) {
         console.error(error);
         writeResponse(res, {

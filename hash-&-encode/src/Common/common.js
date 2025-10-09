@@ -20,7 +20,42 @@ const writeResponse = (res, data) => {
     res.end(JSON.stringify(data));
 }
 
+const validateRequestBody = (body, schema) => {
+    const errors = [];
+    const parsed = typeof body === "string" ? JSON.parse(body) : body;
+
+    for (const key in schema) {
+        if (!parsed.hasOwnProperty(key)) {
+            errors.push(`Missing required field: ${key}`);
+            continue;
+        }
+
+        const expectedType = schema[key];
+        const actualType = typeof parsed[key];
+
+        if (actualType !== expectedType) {
+            errors.push(`
+                Field '${key}' should be of type '${expectedType}', got '${actualType}'
+            `);
+        }
+    }
+
+    if (errors.length > 0) {
+        return {
+            valid: false,
+            message: errors.join("; ")
+        }
+    }
+
+    return {
+        valid: true,
+        data: parsed,
+    }
+}
+
+
 export {
     parseRequest,
-    writeResponse
+    writeResponse,
+    validateRequestBody
 };
