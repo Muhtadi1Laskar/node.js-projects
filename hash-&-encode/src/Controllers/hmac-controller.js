@@ -2,7 +2,7 @@ import { writeResponse } from "../Common/common.js";
 import { hmac } from "../Cryptography/hMac.js";
 
 async function hmacController(res, reqBody) {
-    const { data, key } = JSON.parse(reqBody || {});
+    const { data, key } = reqBody;
 
     const missingFields = [];
     if (!data) missingFields.push("data");
