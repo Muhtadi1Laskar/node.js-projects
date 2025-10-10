@@ -7,4 +7,4 @@ const server = createServer(unifiedHandler);
 
 server.listen(PORT, () => {
     console.log(`The server is running on ${PORT}`);
-})
+});
