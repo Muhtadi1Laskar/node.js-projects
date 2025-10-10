@@ -1,0 +1,11 @@
+{
+  "name": "merkle-tree-verifier",
+  "version": "1.0.0",
+  "description": "A simple program to generate merkle root and verify",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhtadi Laskar",
+  "license": "ISC"
+}
