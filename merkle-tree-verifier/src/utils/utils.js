@@ -10,7 +10,6 @@ const parseRequest = (req) => {
         req.on("data", chunk => (body += chunk.toString()));
         req.on("end", () => {
             try {
-                const data = JSON.parse(body);
                 resolve(body);
             } catch (error) {
                 resolve(data)
