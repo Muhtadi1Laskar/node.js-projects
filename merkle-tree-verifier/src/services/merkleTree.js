@@ -32,6 +32,32 @@ class MerkleTree {
     getRoot() {
         return this.root;
     }
+
+    getProof(leafIndex) {
+        if (leafIndex < 0 || leafIndex >= this.leaves.length) {
+            throw new Error("Invalid leaf index");
+        }
+
+        const proof = [];
+        let currentIndex = leafIndex;
+
+        for (let level = 0; level < this.levels.length - 1; level++) {
+            const currentLevel = this.levels[level];
+            const isRightNode = currentIndex % 2 === 1;
+            const siblingIndex = isRightNode ? currentIndex - 1 : currentIndex + 1;
+
+            if (siblingIndex < currentLevel.length) {
+                proof.push({
+                    position: isRightNode ? "left" : "right",
+                    data: currentLevel[siblingIndex],
+                });
+            }
+
+            currentIndex = Math.floor(currentIndex / 2);
+        }
+
+        return proof;
+    }
 }
 
 const documentChunks = [
