@@ -1,5 +1,5 @@
 const verifySchema = {
-    data: "string"
+    data: "object"
 };
 
 export default verifySchema;

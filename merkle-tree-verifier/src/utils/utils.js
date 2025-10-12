@@ -1,0 +1,59 @@
+const writeResponse = (res, data) => {
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(JSON.stringify(data));
+}
+
+const parseRequest = (req) => {
+    return new Promise((resolve, reject) => {
+        let body = '';
+
+        req.on("data", chunk => (body += chunk.toString()));
+        req.on("end", () => {
+            try {
+                const data = JSON.parse(body);
+                resolve(body);
+            } catch (error) {
+                resolve(data)
+            }
+        });
+        req.on("error", reject)
+    });
+}
+
+const validateRequestBody = (body, schema) => {
+    console.log(schema);
+    const errors = [];
+    const parsed = typeof body === "string" ? JSON.parse(body) : body;
+
+    for (const key in schema) {
+        if (!parsed.hasOwnProperty(key)) {
+            errors.push(`Missing required fields: ${key}`);
+            continue;
+        }
+
+        const expectedType = schema[key];
+        const actualType = typeof parsed[key];
+
+        if (actualType !== expectedType) {
+            errors.push(`Field '${key}' should be of type '${expectedType}', got '${actualType}'`)
+        }
+    }
+
+    if (errors.length > 0) {
+        return {
+            valid: false,
+            message: errors.join(", ")
+        }
+    }
+
+    return {
+        valid: true,
+        data: parsed
+    };
+}
+
+export {
+    writeResponse,
+    parseRequest,
+    validateRequestBody
+};

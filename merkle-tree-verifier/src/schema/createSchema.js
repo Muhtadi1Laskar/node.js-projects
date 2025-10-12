@@ -1,5 +1,5 @@
 const createSchema = {
-    data: "array",
+    data: "object",
 };
 
 export default createSchema;
