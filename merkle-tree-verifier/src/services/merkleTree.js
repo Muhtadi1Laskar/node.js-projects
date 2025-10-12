@@ -1,6 +1,6 @@
 import { hashData } from "./hashFunction.js";
 
-class MerkleTree {
+export default class MerkleTree {
     constructor(leaves) {
         this.leaves = leaves.map(hashData);
         this.levels = this.build(this.leaves);
@@ -58,16 +58,17 @@ class MerkleTree {
 
         return proof;
     }
+
+    verify(leaf, proof) {
+        let computedHash = hashData(leaf);
+
+        for (const step of proof) {
+            if (step.position === "left") {
+                computedHash = hashData(step.data + computedHash);
+            } else {
+                computedHash = hashData(computedHash + step.data);
+            }
+        }
+        return computedHash === this.root;
+    }
 }
-
-const documentChunks = [
-    "Blockchain ensures data integrity through consensus.",
-    "Merkle trees allow efficient verification of data chunks.",
-    "Each leaf node represents a hashed data block.",
-    "Parent nodes store hashes of their children.",
-    "The root hash summarizes the entire dataset."
-];
-
-const tree = new MerkleTree(documentChunks);
-
-console.log(tree.getRoot());
