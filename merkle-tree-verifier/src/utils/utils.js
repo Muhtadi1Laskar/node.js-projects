@@ -21,7 +21,6 @@ const parseRequest = (req) => {
 }
 
 const validateRequestBody = (body, schema) => {
-    console.log(schema);
     const errors = [];
     const parsed = typeof body === "string" ? JSON.parse(body) : body;
 

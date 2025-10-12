@@ -23,7 +23,6 @@ async function merkleHandler(req, res) {
             return;
         }
 
-
         body = JSON.parse(rawBody || {});
     }
 
