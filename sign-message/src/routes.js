@@ -1,15 +1,17 @@
+import signSchema from "./schema/signSchema.js";
+import verifySchema from "./schema/verifySchema.js";
+
 const routes = {
     "POST:/generateKey": {
-        controller: '',
-        schema: '',
+        controller: ''
     },
     "POST:/sign-message": {
         controller: '',
-        schema: '',
+        schema: signSchema,
     },
     "POST:/verify-messsage": {
         controller: '',
-        schema: '',
+        schema: verifySchema,
     }
 };
 
