@@ -6,7 +6,7 @@ export default async function handlers(req, res) {
     const endpoint = `${method}:${url}`;
     const route = routes[endpoint];
 
-    if(!route) {
+    if (!route) {
         writeResponse(res, {
             message: "Invalid Route"
         });
