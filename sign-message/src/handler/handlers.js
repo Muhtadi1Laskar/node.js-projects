@@ -10,6 +10,6 @@ export default async function handlers(req, res) {
         writeResponse(res, {
             message: "Invalid Route"
         });
-        return
+        return;
     }
 }
