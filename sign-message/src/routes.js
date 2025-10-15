@@ -3,7 +3,8 @@ import verifySchema from "./schema/verifySchema.js";
 
 const routes = {
     "POST:/generateKey": {
-        controller: ''
+        controller: '',
+        scheme: '',
     },
     "POST:/sign-message": {
         controller: '',
