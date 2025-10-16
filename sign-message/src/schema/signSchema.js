@@ -1,8 +1,7 @@
 const signSchema = {
     message: "string",
     signatureAlgorithm: "string",
-    privateKey: "string",
-    passPhrase: "string"
+    privateKey: "string"
 };
 
 export default signSchema;

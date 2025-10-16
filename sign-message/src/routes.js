@@ -1,4 +1,5 @@
 import generateKeyController from "./controllers/generateKeyController.js";
+import signMessageController from "./controllers/signMessageController.js";
 import keySchema from "./schema/keysSchema.js";
 import signSchema from "./schema/signSchema.js";
 import verifySchema from "./schema/verifySchema.js";
@@ -9,10 +10,10 @@ const routes = {
         schema: keySchema,
     },
     "POST:/sign-message": {
-        controller: '',
+        controller: signMessageController,
         schema: signSchema,
     },
-    "POST:/verify-messsage": {
+    "POST:/verify-message": {
         controller: '',
         schema: verifySchema,
     }

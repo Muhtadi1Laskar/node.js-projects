@@ -1,3 +1,4 @@
+import { signMessage } from "../RSA/generateKeys.js";
 import { writeResponse } from "../utils/utils.js";
 
 export default async function signMessageController(res, body) {
@@ -18,8 +19,10 @@ export default async function signMessageController(res, body) {
         return;
     }
 
+    console.log(signature);
+
     writeResponse(res, {
-        signature
+        signature: signature
     });
     return;
 }
