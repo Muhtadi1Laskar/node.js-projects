@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 function generateKey(bits, type, cipherAlgorithm, passphrase = "PASSPHRASE") {
 
     const validPrivateTypes = ["pkcs1", "pkcs8"];
-    const validCiphers = crypto.getCiphers(); // returns all supported cipher names
+    const validCiphers = crypto.getCiphers();
 
     if (typeof bits !== "number" || bits < 1024) {
         return { error: "Invalid key length. Must be a number >= 1024." };
