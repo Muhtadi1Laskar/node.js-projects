@@ -24,5 +24,6 @@ export default async function signMessageController(res, body) {
     writeResponse(res, {
         signature: signature
     });
+    
     return;
 }
