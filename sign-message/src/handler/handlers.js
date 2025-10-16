@@ -1,5 +1,5 @@
 import routes from "../routes.js";
-import { parseRequest, writeResponse } from "../utils/utils.js";
+import { parseRequest, validateRequestBody, writeResponse } from "../utils/utils.js";
 
 export default async function handlers(req, res) {
     const { url, method } = req;
@@ -13,7 +13,7 @@ export default async function handlers(req, res) {
         return;
     }
 
-    let body = "";
+    let body = {};
     if(method === "POST") {
         const rawBody = await parseRequest(req);
         const { valid, message } = validateRequestBody(rawBody, route.schema);
