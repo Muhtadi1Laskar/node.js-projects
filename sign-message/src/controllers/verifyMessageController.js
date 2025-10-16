@@ -1,23 +1,24 @@
+import { verifyMessage } from "../RSA/generateKeys.js";
 import { writeResponse } from "../utils/utils.js";
 
 export default async function verifyMessageController(res, body) {
     const {
+        message,
         signature,
         signatureAlgorithm,
-        outputType
+        outputEncoding,
+        publicKey
     } = body;
 
-    const { error, isValid } = verifyMessage(signature, signatureAlgorithm, publicKey, outputType);
+    const { error, isVerified } = verifyMessage(signature, message, signatureAlgorithm, publicKey, outputEncoding);
 
     if (error) {
-        writeResponse(res, {
-            message: error
-        });
+        writeResponse(res, error);
         return;
     }
 
     writeResponse(res, {
-        isValid
+        isVerified
     });
 
     return;

@@ -43,21 +43,13 @@ function generateKey(bits, type, cipherAlgorithm, passphrase = "PASSPHRASE") {
 }
 
 function signMessage(message, signatureAlgorithm, outputEncoding, privateKeyString, passPhrase) {
-    const validEncodingTypes = ["hex"];
-    const validAlgorithms = crypto.getHashes().filter(hash => hash.includes("RSA-"));
+    const error = checkForErrors(signatureAlgorithm, outputEncoding);
+
+    if (error) {
+        return error;
+    }
+
     const cleanPrivateKeyString = privateKeyString.replace(/\\n/g, "\n");
-
-    if (!validEncodingTypes.includes(outputEncoding)) {
-        return {
-            error: `${outputEncoding} is not supported. Supported encodings: ${validEncodingTypes.join(', ')}`
-        };
-    }
-
-    if (!validAlgorithms.includes(signatureAlgorithm)) {
-        return {
-            error: `Invalid signature algorithm. Use one of: ${validAlgorithms.join(', ')}`
-        };
-    }
 
     if (!isValidPrivateKey(cleanPrivateKeyString, passPhrase)) {
         return {
@@ -85,6 +77,61 @@ function signMessage(message, signatureAlgorithm, outputEncoding, privateKeyStri
 
 }
 
+function verifyMessage(signature, message, signatureAlgorithm, publicKeyString, encodingType) {
+    const error = checkForErrors(signatureAlgorithm, encodingType);
+
+    if (error) {
+        return error;
+    }
+
+    const cleanPublicKeyString = publicKeyString.replace(/\\n/g, "\n");
+
+    if (!isValidPublicKey(cleanPublicKeyString)) {
+        return {
+            error: "Invalid Public Key"
+        };
+    }
+
+    try {
+        const publicKey = crypto.createPublicKey(cleanPublicKeyString);
+        const verifier = crypto.createVerify(signatureAlgorithm);
+        verifier.update(message);
+
+        const isVerified = verifier.verify(publicKey, signature, encodingType);
+        return { isVerified };
+    } catch (error) {
+        console.error(error);
+        return error;
+    }
+}
+
+function checkForErrors(signatureAlgorithm, encodingType) {
+    const validEncodingTypes = ["hex"];
+    const validAlgorithms = crypto.getHashes().filter(hash => hash.includes("RSA-"));
+
+    if (!validEncodingTypes.includes(encodingType)) {
+        return {
+            error: `${encodingType} is not supported. Supported encodings: ${validEncodingTypes.join(', ')}`
+        };
+    }
+
+    if (!validAlgorithms.includes(signatureAlgorithm)) {
+        return {
+            error: `Invalid signature algorithm. Use one of: ${validAlgorithms.join(', ')}`
+        };
+    }
+}
+
+const isValidPublicKey = (publicKey) => {
+    try {
+        const keyObject = crypto.createPublicKey(publicKey);
+        return keyObject.type === "public" && keyObject.asymmetricKeyType === "rsa";
+    } catch (error) {
+        console.error("Key validation error: ", error.message);
+        return error;
+    }
+}
+
 const isValidPrivateKey = (key, passphrase) => {
     try {
         const privateKey = crypto.createPrivateKey({ key, passphrase });
@@ -102,5 +149,6 @@ const isValidPrivateKey = (key, passphrase) => {
 
 export {
     generateKey,
-    signMessage
+    signMessage,
+    verifyMessage
 };

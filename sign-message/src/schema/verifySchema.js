@@ -1,6 +1,6 @@
 const verifySchema = {
     signature: "string",
-    signatureAlgorithms: "string",
+    signatureAlgorithm: "string",
     publicKey: "string",
     outputEncoding: "string"
 };
