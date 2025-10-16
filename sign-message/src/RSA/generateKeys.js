@@ -43,10 +43,10 @@ function generateKey(bits, type, cipherAlgorithm, passphrase = "PASSPHRASE") {
 }
 
 function signMessage(message, signatureAlgorithm, outputEncoding, privateKeyString, passPhrase) {
-    const error = checkForErrors(signatureAlgorithm, outputEncoding);
+    const validationError = checkForErrors(signatureAlgorithm, outputEncoding);
 
-    if (error) {
-        return error;
+    if (validationError) {
+        return validationError;
     }
 
     const cleanPrivateKeyString = privateKeyString.replace(/\\n/g, "\n");
@@ -78,10 +78,10 @@ function signMessage(message, signatureAlgorithm, outputEncoding, privateKeyStri
 }
 
 function verifyMessage(signature, message, signatureAlgorithm, publicKeyString, encodingType) {
-    const error = checkForErrors(signatureAlgorithm, encodingType);
+    const validationError = checkForErrors(signatureAlgorithm, encodingType);
 
-    if (error) {
-        return error;
+    if (validationError) {
+        return validationError;
     }
 
     const cleanPublicKeyString = publicKeyString.replace(/\\n/g, "\n");
@@ -96,6 +96,7 @@ function verifyMessage(signature, message, signatureAlgorithm, publicKeyString, 
         const publicKey = crypto.createPublicKey(cleanPublicKeyString);
         const verifier = crypto.createVerify(signatureAlgorithm);
         verifier.update(message);
+        verifier.end();
 
         const isVerified = verifier.verify(publicKey, signature, encodingType);
         return { isVerified };
