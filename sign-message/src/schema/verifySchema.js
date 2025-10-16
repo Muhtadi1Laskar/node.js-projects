@@ -1,6 +1,7 @@
 const verifySchema = {
-    message: "string",
-    publicKey: "string"
+    signature: "string",
+    signatureAlgorithms: "string",
+    outputEncoding: "string"
 };
 
 export default verifySchema;
