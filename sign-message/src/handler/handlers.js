@@ -1,5 +1,5 @@
 import routes from "../routes.js";
-import { writeResponse } from "../utils/utils.js";
+import { parseRequest, writeResponse } from "../utils/utils.js";
 
 export default async function handlers(req, res) {
     const { url, method } = req;
