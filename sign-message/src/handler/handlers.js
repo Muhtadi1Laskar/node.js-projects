@@ -6,9 +6,9 @@ export default async function handlers(req, res) {
     const endpoint = `${method}:${url}`;
     const route = routes[endpoint];
 
-    if (!route) {
+    if (!route.controller) {
         writeResponse(res, {
-            message: "Invalid Route"
+            message: "Route not found"
         });
         return;
     }
@@ -23,7 +23,7 @@ export default async function handlers(req, res) {
             return;
         }
 
-        body = JSON.parse(rawBody || {});
+        body = rawBody;
     }
 
     try {

@@ -20,7 +20,6 @@ function generateKey(bits, type, cipherAlgorithm, passphrase = "PASSPHRASE") {
     }, (err) => err.message);
 }
 
-const { publicKey, privateKey } = generateKey(2048, "pkcs8", "aes-256-cbc", "Hellos90");
-
-console.log(publicKey);
-console.log(privateKey);
+export {
+    generateKey
+};

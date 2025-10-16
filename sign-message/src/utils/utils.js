@@ -1,12 +1,12 @@
 const parseRequest = (req) => {
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
         let body = '';
 
         req.on("data", chunk => (body += chunk.toString()));
         req.on("end", () => {
             try {
                 const requestBody = JSON.parse(body);
-                resolve(body)
+                resolve(requestBody)
             } catch (error) {
                 resolve(body);
             }
@@ -15,13 +15,13 @@ const parseRequest = (req) => {
     });
 }
 
-const validateRequestBody = (reqBody, schema) => {
+const validateRequestBody = (body, schema) => {
     const errors = [];
-    const parsed = typeof reqBody === "string" ? JSON.parse(reqBody) : reqBody;
+    const parsed = typeof body === "string" ? JSON.parse(body) : body;
 
     for (const key in schema) {
         if (!parsed.hasOwnProperty(key)) {
-            error.push(`Missing required field(s): ${key}`);
+            errors.push(`Missing required field: ${key}`);
             continue;
         }
 
@@ -36,14 +36,14 @@ const validateRequestBody = (reqBody, schema) => {
     if (errors.length > 0) {
         return {
             valid: false,
-            message: errors.join(", ")
-        };
+            message: errors.join("; ")
+        }
     }
 
     return {
         valid: true,
-        data: parsed
-    };
+        data: parsed,
+    }
 }
 
 
