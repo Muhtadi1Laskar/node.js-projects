@@ -12,4 +12,26 @@ export default async function handlers(req, res) {
         });
         return;
     }
+
+    let body = "";
+    if(method === "POST") {
+        const rawBody = await parseRequest(req);
+        const { valid, message } = validateRequestBody(rawBody, route.schema);
+
+        if(!valid) {
+            writeResponse(res, { message });
+            return;
+        }
+
+        body = JSON.parse(rawBody || {});
+    }
+
+    try {
+        await route.controller(res, body);
+    } catch (error) {
+        console.error(error);
+        writeResponse(res, {
+            message: error.message
+        });
+    }
 }

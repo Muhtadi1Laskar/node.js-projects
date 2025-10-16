@@ -1,12 +1,9 @@
 import { createServer } from "node:http";
+import handlers from "./handler/handlers.js";
 
 const PORT = process.env.PORT || 8080;
 
-const server = createServer((req, res) => {
-    res.statusCode = 200;
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "Hello World" }));
-});
+const server = createServer(handlers);
 
 
 server.listen(PORT, () => {
