@@ -1,4 +1,4 @@
-import { createUser, findUser } from "../services/user.service.js";
+import { authenticateUser, createUser, findOne, findUser } from "../services/user.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 import { isValidEmail } from "../utils/utils.js";
 
@@ -34,4 +34,29 @@ export const registerUser = async (res, body) => {
     } catch (error) {
         errorResponse(res, { message: error }, 403);
     }
+}
+
+
+export const login = async (res, body) => {
+    const { email } = body;
+
+    if (!isValidEmail(email)) {
+        errorResponse(res, {
+            message: 'Invalid email format'
+        }, 403);
+        return;
+    }
+
+    try {
+        const token = await authenticateUser(body);
+        successResponse(res, {
+            message: "Login in successful",
+            token
+        }, 200);
+    } catch (error) {
+        errorResponse(res, {
+            message: error.message || "Authentication Failed"
+        }, 401);
+    }
+
 }

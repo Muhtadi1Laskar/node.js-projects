@@ -32,3 +32,20 @@ export const writeJSON = async (collectionName, data) => {
         return error;
     }
 }
+
+export async function findUser(query) {
+    const userData = await readJSON("users");
+    const keys = Object.keys(query);
+
+    const matchingUsers = userData.filter(user => {
+        return keys.every(key => {
+            return user[key] === query[key];
+        });
+    });
+    return matchingUsers;
+}
+
+export async function findOne(query) {
+    const data = await findUser(query);
+    return data[0];
+}

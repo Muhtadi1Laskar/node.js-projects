@@ -1,4 +1,5 @@
-import { registerUser } from "../controllers/user.controller.js";
+import { login, registerUser } from "../controllers/user.controller.js";
+import { loginSchema } from "../schema/loginSchema.js";
 import { registerSchema } from "../schema/registerSchema.js";
 
 const routes = {
@@ -7,8 +8,8 @@ const routes = {
         schema: registerSchema
     },
     "POST:/login": {
-        controller: "",
-        schema: ""
+        controller: login,
+        schema: loginSchema
     }
 };
 

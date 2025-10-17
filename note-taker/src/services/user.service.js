@@ -20,10 +20,22 @@ export async function createUser({ name, email, password }) {
             message: "Successfully created the user account"
         };
     } catch (error) {
-        return {
-            error
-        };
+        throw new Error(error);
     }
+}
+
+export async function authenticateUser({ email, password }) {
+    const user = await findOne({ email });
+    
+    if(!user || !(await bcrypt.compare(password, user.hashedPassword))) {
+        throw new Error("Invalid credentials");
+    }
+    
+    if(!user.isActive) {
+        throw new Error("User is not active");
+    }
+
+    return generateID();
 }
 
 export async function findUser(query) {
@@ -36,4 +48,9 @@ export async function findUser(query) {
         });
     });
     return matchingUsers;
+}
+
+export async function findOne(query) {
+    const data = await findUser(query);
+    return data[0];
 }
