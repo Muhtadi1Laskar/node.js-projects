@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from "path"
 
 export const readJSON = async (collectionName) => {
-    const fullPath = path.join("database", `${collectionName}.json`);
+    const fullPath = path.join("src/database", `${collectionName}.json`);
     try {
         const dataString = await fs.readFile(fullPath, "utf-8");
         return JSON.parse(dataString);

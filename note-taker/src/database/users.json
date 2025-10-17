@@ -1,8 +1,14 @@
 [
   {
-    "id": "68f271903b9935a9d103752d",
-    "name": "Muhtadi",
+    "id": "68f2784b64d5b1d5bd0cc6e1",
+    "name": "Muhtadi9i",
+    "email": "laskar90muhta8di@gmail.com",
+    "hashedPassword": "$2b$10$B4eCvDjltfdBPRYZjj9aYuM0TkxknYEINFUZyWAJkltRgrD7tecMy"
+  },
+  {
+    "id": "68f27850306c3ff3390243a5",
+    "name": "Muhtadi9i",
     "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$ZR/1zW7fkcgXHjxbzdyUZ.CqDR4mILxrYpjknaubkod9FamjHc2F6"
+    "hashedPassword": "$2b$10$/jEfdhpV9jGQtAc4DJXv2.iS3zM1mKMhqQ/NM6EHN0lsOkIvcasie"
   }
 ]
