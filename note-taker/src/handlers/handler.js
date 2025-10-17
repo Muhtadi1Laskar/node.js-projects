@@ -1,7 +1,7 @@
 import routes from "../routers/routes.js";
 import { checkTokenValidity } from "../utils/utils.js";
 import { parseRequestBody } from "../utils/requests.js";
-import { errorResponse, successResponse } from "../utils/response.js";
+import { errorResponse } from "../utils/response.js";
 import { validateSchema } from "../utils/utils.js";
 
 export default async function handler(req, res) {
