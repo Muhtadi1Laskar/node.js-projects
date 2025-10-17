@@ -12,6 +12,7 @@
   "author": "Muhtadi Laskar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "nodemon": "^3.1.10"
   }
 }
