@@ -5,5 +5,19 @@
     "email": "straw@gmail.com",
     "hashedPassword": "$2b$10$iFhMVnO3wKbmx8la8wts/e3bD74UTdC5oO0fiXW7tRVyOFL9HOu5y",
     "isActive": true
+  },
+  {
+    "id": "68f2884cc5392b40540844c5",
+    "name": "luffy",
+    "email": "stsraw@gmail.com",
+    "hashedPassword": "$2b$10$zsSTPfSFEMBYOpo7esxfi.O.f42pp2A.S077Bm4HQDXlACclwRCce",
+    "isActive": true
+  },
+  {
+    "id": "68f2bb4681549afdc60c2676",
+    "name": "luffy",
+    "email": "st8raw@gmail.com",
+    "hashedPassword": "$2b$10$01lSjh/GxMFwtpUo2WcNnexk5ou.dg7Llc2r3QgkJ9O9gB9OwbGqa",
+    "isActive": true
   }
 ]

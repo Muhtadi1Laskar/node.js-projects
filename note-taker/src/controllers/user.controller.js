@@ -1,4 +1,4 @@
-import { authenticateUser, createUser, findOne, findUser } from "../services/user.service.js";
+import { authenticateUser, createUser } from "../services/user.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 import { isValidEmail } from "../utils/utils.js";
 
@@ -20,19 +20,10 @@ export const registerUser = async (res, body) => {
     }
 
     try {
-        const isRegistered = await findUser({ email });
-
-        if (isRegistered.length > 0) {
-            errorResponse(res, {
-                message: `User with the email: ${email} alread exists`
-            }, 403);
-            return;
-        }
-
         const user = await createUser(body);
         successResponse(res, user, 201);
     } catch (error) {
-        errorResponse(res, { message: error }, 403);
+        errorResponse(res, { message: error.message }, 403);
     }
 }
 

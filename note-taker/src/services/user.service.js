@@ -1,8 +1,15 @@
 import bcrypt from 'bcrypt';
-import { readJSON, writeJSON } from '../utils/database.js';
+import { findOne, findUser, readJSON, writeJSON } from '../utils/database.js';
 import { generateID } from '../utils/utils.js';
+import { errorResponse } from '../utils/response.js';
 
 export async function createUser({ name, email, password }) {
+    const isRegistered = await findUser({ email });
+
+    if (isRegistered.length > 0) {
+        throw new Error("Email already exists");
+    }
+
     const ID = generateID();
     const hashedPassword = await bcrypt.hash(password, 10);
     const userBody = {
@@ -26,31 +33,15 @@ export async function createUser({ name, email, password }) {
 
 export async function authenticateUser({ email, password }) {
     const user = await findOne({ email });
-    
-    if(!user || !(await bcrypt.compare(password, user.hashedPassword))) {
+
+    if (!user || !(await bcrypt.compare(password, user.hashedPassword))) {
         throw new Error("Invalid credentials");
     }
-    
-    if(!user.isActive) {
+
+    if (!user.isActive) {
         throw new Error("User is not active");
     }
 
     return generateID();
 }
 
-export async function findUser(query) {
-    const userData = await readJSON("users");
-    const keys = Object.keys(query);
-
-    const matchingUsers = userData.filter(user => {
-        return keys.every(key => {
-            return user[key] === query[key];
-        });
-    });
-    return matchingUsers;
-}
-
-export async function findOne(query) {
-    const data = await findUser(query);
-    return data[0];
-}
