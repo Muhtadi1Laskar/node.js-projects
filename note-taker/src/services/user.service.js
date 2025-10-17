@@ -1,7 +1,10 @@
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
 import { findOne, findUser, readJSON, writeJSON } from '../utils/database.js';
 import { generateID } from '../utils/utils.js';
 import { errorResponse } from '../utils/response.js';
+
+const secretKey = "This is the key";
 
 export async function createUser({ name, email, password }) {
     const isRegistered = await findUser({ email });
@@ -42,6 +45,6 @@ export async function authenticateUser({ email, password }) {
         throw new Error("User is not active");
     }
 
-    return generateID();
+    return jwt.sign(user, secretKey, { expiresIn: '1h' });
 }
 
