@@ -1,3 +1,5 @@
+import crypto from "node:crypto";
+
 const validateSchema = (body, schema) => {
     const errors = [];
     const parsedBody = typeof body === "string" ? JSON.parse(body): body;
@@ -28,6 +30,21 @@ const validateSchema = (body, schema) => {
     }
 }
 
+const generateID = () => {
+    let objectIdCounter = Math.floor(Math.random() * 0xfffff);
+
+    const time = Math.floor(Date.now() / 1000).toString(16);
+    const timeHex = time.padStart(8, '0');
+    const randomHex = crypto.randomBytes(5).toString('hex');
+
+    objectIdCounter = (objectIdCounter + 1) % 0x1000000;
+
+    const counterHex = objectIdCounter.toString(16).padStart(6, '0');
+
+    return timeHex + randomHex + counterHex;  
+}
+
 export {
-    validateSchema
+    validateSchema,
+    generateID
 };

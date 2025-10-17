@@ -1,32 +1,8 @@
 [
   {
+    "id": "68f271903b9935a9d103752d",
     "name": "Muhtadi",
     "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$qMVjrQZ8yCxVtaF6I.M7me5w2TVuNQef22VvSePgc9rLfZnP50x3G"
-  },
-  {
-    "name": "Muhtadi",
-    "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$EGiyBXkL3OTH94mrC8TbcuyW4iAE3Mift8wtgNj42FLS9bkpsyRYa"
-  },
-  {
-    "name": "Muhtadi",
-    "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$rU/ELcZ0tafa/ZqO9K7B0uw/eLjnQw60MdJxkJEV/PW..m4.5N27y"
-  },
-  {
-    "name": "Muhtadi",
-    "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$O1LH8kvNZvVJYTcu78PDM.nzAjXD5JjKLBDvSENqCmYIV1gwnYwme"
-  },
-  {
-    "name": "Muhtadi",
-    "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$buh1ef0wFSJZJjvzn3YLFuqniRIw5P3/SkjVi4KTMprnPk8EzLJTm"
-  },
-  {
-    "name": "Muhtadi",
-    "email": "laskar90muhtadi@gmail.com",
-    "hashedPassword": "$2b$10$vp1bVsQBQjA.luXxK5TtHeiyxT0YnKjfCCGxFdjHPortlqf9mcL4O"
+    "hashedPassword": "$2b$10$ZR/1zW7fkcgXHjxbzdyUZ.CqDR4mILxrYpjknaubkod9FamjHc2F6"
   }
 ]
