@@ -1,10 +1,11 @@
-import { successResponse } from "../utils/response";
-import { signMessage } from "../utils/signMessage.js";
+import { verifyMessage } from "ethers";
+import { successResponse } from "../utils/response.js";
+import verifyMessages from "../utils/verifyMessage.js";
 
 async function verifyMessageController(req, res) {
     const { message, signatrue, address } = req.body;
 
-    const isValid = signMessage(message, signatrue, address);
+    const isValid = await verifyMessages(message, signatrue, address);
 
     successResponse(res, { isValid }, 200);
 }
