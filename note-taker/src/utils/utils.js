@@ -2,10 +2,10 @@ import crypto from "node:crypto";
 
 const validateSchema = (body, schema) => {
     const errors = [];
-    const parsedBody = typeof body === "string" ? JSON.parse(body): body;
+    const parsedBody = typeof body === "string" ? JSON.parse(body) : body;
 
-    for(const key in schema) {
-        if(!parsedBody.hasOwnProperty(key)) {
+    for (const key in schema) {
+        if (!parsedBody.hasOwnProperty(key)) {
             errors.push(`Missing field(s): ${key}`);
             continue;
         }
@@ -13,12 +13,12 @@ const validateSchema = (body, schema) => {
         const expectedType = schema[key];
         const actualType = typeof parsedBody[key];
 
-        if(expectedType !== actualType) {
+        if (expectedType !== actualType) {
             errors.push(`Field '${key}' should be of type '${expectedType}', got '${actualType}'`);
         }
     }
 
-    if(errors.length > 0) {
+    if (errors.length > 0) {
         return {
             valid: false,
             message: errors.join('; ')
@@ -41,10 +41,16 @@ const generateID = () => {
 
     const counterHex = objectIdCounter.toString(16).padStart(6, '0');
 
-    return timeHex + randomHex + counterHex;  
+    return timeHex + randomHex + counterHex;
+}
+
+const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
 }
 
 export {
     validateSchema,
-    generateID
+    generateID,
+    isValidEmail
 };

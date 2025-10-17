@@ -1,11 +1,11 @@
 import { createUser, findUser } from "../services/user.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
+import { isValidEmail } from "../utils/utils.js";
 
 const registerUser = async (res, body) => {
-    const { name, email, password } = body;
+    const { email, password } = body;
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
+    if (!isValidEmail(email)) {
         errorResponse(res, {
             message: 'Invalid email format'
         }, 403);

@@ -17,5 +17,26 @@
     "email": "luffy@gmail.com",
     "hashedPassword": "$2b$10$3GlwgTu5tmgVgpz6mtkX.OUn..alYTW2s/AmMqMOZRYoBnbiM75em",
     "isActive": true
+  },
+  {
+    "id": "68f27afec2341adf8208d840",
+    "name": "JackASs",
+    "email": "luffy@@#@gmail.com",
+    "hashedPassword": "$2b$10$LoRwYwxujnStdEFsroDMfexn72Rd0X0cXreVgqPniMCYFZMdCCxGi",
+    "isActive": true
+  },
+  {
+    "id": "68f27b0340fcd35c30014ef5",
+    "name": "JackASs",
+    "email": "luffy#@@@#@gmail.com",
+    "hashedPassword": "$2b$10$y29L9/hzGKHFZxQTWMkdwuqTaJKSJvcfZmOhsbLhDSlPh66vvs4n2",
+    "isActive": true
+  },
+  {
+    "id": "68f27b08a278a945350d4689",
+    "name": "JackASs",
+    "email": "luffygmail.com",
+    "hashedPassword": "$2b$10$St7sxMW5sJ5xcNwLk3kj3OljeTDOJ0Bs0jrBOfyILxCNdJCCGvR0y",
+    "isActive": true
   }
 ]
