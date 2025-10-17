@@ -1,4 +1,5 @@
 import routes from "../routers/routes.js";
+import { checkTokenValidity } from "../utils/utils.js";
 import { parseRequestBody } from "../utils/requests.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 import { validateSchema } from "../utils/utils.js";
@@ -13,6 +14,14 @@ export default async function handler(req, res) {
             message: "Invalid endpoint"
         }, 404);
         return;
+    }
+
+    const isPublicRoute = (endpoint === "POST:/login" || endpoint === "POST:/register" || endpoint === "GET:/public");
+    if (!isPublicRoute) {
+        const id = await checkTokenValidity(req, res);
+        if(!id) {
+            return;
+        }
     }
 
     let body = {};

@@ -1,4 +1,6 @@
 import crypto from "node:crypto";
+import jwt from "jsonwebtoken";
+import { errorResponse } from "./response.js";
 
 const validateSchema = (body, schema) => {
     const errors = [];
@@ -47,6 +49,37 @@ const generateID = () => {
 const isValidEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
+}
+
+
+export const checkTokenValidity = async (req, res) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        errorResponse(res, {
+            message: "Authorization header missing"
+        }, 401);
+        return;
+    }
+
+    const parts = authHeader.split(' ');
+    if (parts.length !== 2 || parts[0].toLowerCase() !== "bearer") {
+        errorResponse(res, {
+            messsage: 'Authorization format must be "Bearer [token]".'
+        }, 401);
+        return;
+    }
+    const token = parts[1];
+    const decoded = jwt.verify(token, "This is the key");
+
+    if (!decoded || !decoded.id) {
+        errorResponse(res, {
+            message: 'Invalid or expired token'
+        }, 401);
+        return
+    }
+
+    return decoded.id;
 }
 
 export {

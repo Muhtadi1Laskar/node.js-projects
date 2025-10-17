@@ -19,5 +19,26 @@
     "email": "st8raw@gmail.com",
     "hashedPassword": "$2b$10$01lSjh/GxMFwtpUo2WcNnexk5ou.dg7Llc2r3QgkJ9O9gB9OwbGqa",
     "isActive": true
+  },
+  {
+    "id": "68f2c5bf573285186a0f2527",
+    "name": "luffy",
+    "email": "st8raw@gmsail.com",
+    "hashedPassword": "$2b$10$zp/l5XeaNq1N0Bd0d1KPoeJDXvcly8KbrsrIPkv/0owcG4/5EblaG",
+    "isActive": true
+  },
+  {
+    "id": "68f2c80c37a725cfb0044b1d",
+    "name": "zoro",
+    "email": "sword@gmail.csom",
+    "hashedPassword": "$2b$10$XuhRwktoir85YUraNMEQbOI7eAPcNrxSaePomp0xX0o6Ht47SCDJm",
+    "isActive": true
+  },
+  {
+    "id": "68f2c8182ecd90f40c09be65",
+    "name": "zoro",
+    "email": "sword@gmail.com",
+    "hashedPassword": "$2b$10$pyRyST8sFZSet33HVBZsK.XLZb3lI4hknQdDf91rgehOkIzPUCmPa",
+    "isActive": true
   }
 ]
