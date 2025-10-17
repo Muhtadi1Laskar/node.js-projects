@@ -2,7 +2,7 @@ import { createUser, findUser } from "../services/user.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 import { isValidEmail } from "../utils/utils.js";
 
-const registerUser = async (res, body) => {
+export const registerUser = async (res, body) => {
     const { email, password } = body;
 
     if (!isValidEmail(email)) {
@@ -35,5 +35,3 @@ const registerUser = async (res, body) => {
         errorResponse(res, { message: error }, 403);
     }
 }
-
-export default registerUser;
