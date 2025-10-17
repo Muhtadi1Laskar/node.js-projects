@@ -10,9 +10,7 @@ export default async function handler(req, res) {
     const route = routes[endpoint];
 
     if (!route.controller) {
-        errorResponse(res, {
-            message: "Invalid endpoint"
-        }, 404);
+        errorResponse(res, { message: "Invalid endpoint" }, 404);
         return;
     }
 
@@ -32,9 +30,7 @@ export default async function handler(req, res) {
         const { valid, message } = validateSchema(rawReqBody, route.schema);
 
         if (!valid) {
-            errorResponse(res, {
-                message
-            }, 403);
+            errorResponse(res, { message }, 403);
             return
         }
 
@@ -45,8 +41,6 @@ export default async function handler(req, res) {
         await route.controller(res, body);
     } catch (error) {
         console.error(error);
-        errorResponse(res, {
-            message: error
-        }, 404);
+        errorResponse(res, { message: error }, 404);
     }
 }
