@@ -1,8 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
-import { findOne, findUser, readJSON, writeJSON } from '../utils/database.js';
+import { findOne, findUser, writeJSON } from '../utils/database.js';
 import { generateID } from '../utils/utils.js';
-import { errorResponse } from '../utils/response.js';
 
 const secretKey = "This is the key";
 
