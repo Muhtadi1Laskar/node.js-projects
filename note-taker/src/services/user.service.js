@@ -9,7 +9,8 @@ export async function createUser({ name, email, password }) {
         id: ID,
         name,
         email,
-        hashedPassword
+        hashedPassword,
+        isActive: true
     };
 
     try {

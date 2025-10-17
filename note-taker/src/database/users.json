@@ -10,5 +10,12 @@
     "name": "Muhtadi9i",
     "email": "laskar90muhtadi@gmail.com",
     "hashedPassword": "$2b$10$/jEfdhpV9jGQtAc4DJXv2.iS3zM1mKMhqQ/NM6EHN0lsOkIvcasie"
+  },
+  {
+    "id": "68f27a4f8c152c46cf097bb6",
+    "name": "JackASs",
+    "email": "luffy@gmail.com",
+    "hashedPassword": "$2b$10$3GlwgTu5tmgVgpz6mtkX.OUn..alYTW2s/AmMqMOZRYoBnbiM75em",
+    "isActive": true
   }
 ]
