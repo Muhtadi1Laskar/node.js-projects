@@ -19,7 +19,7 @@ export const writeJSON = async (collectionName, data) => {
         const dataString = await fs.readFile(fullPath, "utf-8");
         currentData = JSON.parse(dataString);
 
-        if(!Array.isArray(currentData)) {
+        if (!Array.isArray(currentData)) {
             console.warn('Existing file is not an array. Overwriting with new array.');
             currentData = [];
         }
