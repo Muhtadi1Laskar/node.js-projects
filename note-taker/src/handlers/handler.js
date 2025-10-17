@@ -16,10 +16,12 @@ export default async function handler(req, res) {
         return;
     }
 
-    const isPublicRoute = (endpoint === "POST:/login" || endpoint === "POST:/register" || endpoint === "GET:/public");
+    const isPublicRoute = (
+        endpoint === "POST:/login" || endpoint === "POST:/register" || endpoint === "GET:/public"
+    );
     if (!isPublicRoute) {
         const id = await checkTokenValidity(req, res);
-        if(!id) {
+        if (!id) {
             return;
         }
     }
