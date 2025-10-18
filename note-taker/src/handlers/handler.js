@@ -17,8 +17,9 @@ export default async function handler(req, res) {
     const isPublicRoute = (
         endpoint === "POST:/login" || endpoint === "POST:/register" || endpoint === "GET:/public"
     );
+    let id = 0;
     if (!isPublicRoute) {
-        const id = await checkTokenValidity(req, res);
+        id = await checkTokenValidity(req, res);
         if (!id) {
             return;
         }
@@ -35,6 +36,7 @@ export default async function handler(req, res) {
         }
 
         body = rawReqBody;
+        body["userID"] = id;
     }
 
     try {

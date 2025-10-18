@@ -1,3 +1,4 @@
+import { makeNote } from "../controllers/note.controller.js";
 import { login, registerUser } from "../controllers/user.controller.js";
 import { loginSchema } from "../schema/loginSchema.js";
 import { noteSchema } from "../schema/noteSchema.js";
@@ -13,7 +14,7 @@ const routes = {
         schema: loginSchema
     },
     "POST:/make-note": {
-        controller: '',
+        controller: makeNote,
         schema: noteSchema
     }
 };
