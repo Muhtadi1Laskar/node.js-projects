@@ -1,10 +1,6 @@
-import http from "node:http";
 import crypto from "node:crypto";
-import url from "node:url";
-
 
 const JWT_SECRET = "THis_IS_SecRET";
-const PORT = process.env.PORT || 8080;
 const ALGORITHM = "HS256";
 
 const base64urlEncode = (data) => {
