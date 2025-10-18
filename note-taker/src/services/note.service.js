@@ -24,11 +24,25 @@ export const createNote = async ({ title, content, tags, userID }) => {
     }
 }
 
+export const getNotes = async (query) => {
+    try {
+        const notes = await findUser(query, "note");
+
+        if (notes.length === 0) {
+            throw new Error("There are no notes under this userID");
+        }
+
+        return notes;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 export const updateNote = async ({ userID, noteID, fieldsToUpdate }) => {
     const allNotes = await readJSON("note");
     const noteIndex = allNotes.findIndex(note => note.userID === userID && note.noteID === noteID);
 
-    if(noteIndex === -1) {
+    if (noteIndex === -1) {
         throw new Error("Note not found for the specified user");
     }
 
@@ -48,16 +62,21 @@ export const updateNote = async ({ userID, noteID, fieldsToUpdate }) => {
     };
 }
 
-export const getNotes = async (query) => {
-    try {
-        const notes = await findUser(query, "note");
+export const deleteNote = async ({ userID, noteID, fieldsToUpdate }) => {
+    const allNotes = await readJSON("note");
+    const noteIndex = allNotes.findIndex(note => note.userID === userID && note.noteID === noteID);
 
-        if (notes.length === 0) {
-            throw new Error("There are no notes under this userID");
-        }
-
-        return notes;
-    } catch (error) {
-        throw new Error(error);
+    if (noteIndex === -1) {
+        throw new Error("Note not found for the specified user");
     }
+
+    const noteToDelete = allNotes[noteIndex];
+    const newNotes = allNotes.filter(note => note.userID !== userID && note.noteID !== noteID);
+    console.log(newNotes);
+    await writeNewJSON("note", newNotes);
+
+    return {
+        message: "Successfully deleted the note",
+        deletedNote: noteToDelete
+    };
 }

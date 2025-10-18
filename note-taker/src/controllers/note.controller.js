@@ -1,4 +1,4 @@
-import { createNote, getNotes, updateNote } from "../services/note.service.js";
+import { createNote, deleteNote, getNotes, updateNote } from "../services/note.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 
 export const makeNote = async (res, body) => {
@@ -28,5 +28,14 @@ export const updateNotes = async (res, body) => {
         successResponse(res, { message: notes }, 200);
     } catch (error) {
         errorResponse(res, { message: error.message }, 403);
+    }
+}
+
+export const deleteNoteById = async (res, body) => {
+    try {
+        const note = await deleteNote(body);
+        successResponse(res, { message: note }, 200);
+    } catch (error) {
+        errorResponse(res, { message: error.message }, 403)
     }
 }

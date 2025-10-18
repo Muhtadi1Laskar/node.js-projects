@@ -1,37 +1,3 @@
 [
-  {
-    "id": "68f39c7f20840b9b9f0d695f",
-    "name": "Luffy",
-    "email": "luffy@gmail.com",
-    "hashedPassword": "$2b$10$5jySgP8lGeP2XaZ6HQBKqeq8dhJy8DLCdIPlDVR4bakJt8I.1VS26",
-    "isActive": true
-  },
-  {
-    "id": "68f39c8f0552bc931a0d25cb",
-    "name": "Zoro",
-    "email": "zoro@gmail.com",
-    "hashedPassword": "$2b$10$rOoLXpNJcC88UpQ1AwhNKu4Vmr9s4Lz42MIVQHSH0rSw8griTy3W6",
-    "isActive": true
-  },
-  {
-    "id": "68f39c9bc7d5838e3702770c",
-    "name": "Sanji",
-    "email": "sanji@gmail.com",
-    "hashedPassword": "$2b$10$SXpnRdZAnnKjn6MSy7CgjOSLLg7eNeS8uL8eUcnn6ql05jo6G2BhS",
-    "isActive": true
-  },
-  {
-    "id": "68f39ca44aff8f6ee507fd7c",
-    "name": "Usopp",
-    "email": "usopp@gmail.com",
-    "hashedPassword": "$2b$10$13wddJES55jJZTCW4tgueOOp5rsFgpDfJf/h3Z94fXSr8iRp/k0am",
-    "isActive": true
-  },
-  {
-    "id": "68f39cac5e0baa18020241fa",
-    "name": "Nami",
-    "email": "nami@gmail.com",
-    "hashedPassword": "$2b$10$sZGcuZrMqn8MxzPMQBlmI.h.G6BnozNw0sMc3/ujJ8db5H6ylPSFm",
-    "isActive": true
-  }
+  
 ]

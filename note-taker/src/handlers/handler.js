@@ -31,7 +31,7 @@ export default async function handler(req, res) {
             await middleware(req, res, next);
         } else {
             try {
-                await route.controller(res, { ...req.body, usedID: req.usedID });
+                await route.controller(res, { ...req.body, userID: req.userID });
             } catch (error) {
                 console.error(error);
                 errorResponse(res, { message: error.message || "Server Error" }, 500);

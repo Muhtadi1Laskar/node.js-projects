@@ -1,5 +1,6 @@
-import { getAllNotes, makeNote, updateNotes } from "../controllers/note.controller.js";
+import { deleteNoteById, getAllNotes, makeNote, updateNotes } from "../controllers/note.controller.js";
 import { login, registerUser } from "../controllers/user.controller.js";
+import { deleteSchema } from "../schema/deleteNoteSchema.js";
 import { loginSchema } from "../schema/loginSchema.js";
 import { noteSchema } from "../schema/noteSchema.js";
 import { registerSchema } from "../schema/registerSchema.js";
@@ -24,6 +25,10 @@ const routes = {
     "PUT:/update-notes": {
         controller: updateNotes,
         schema: updateSchema
+    },
+    "DELETE:/delete-note": {
+        controller: deleteNoteById,
+        schema: deleteSchema
     }
 };
 
