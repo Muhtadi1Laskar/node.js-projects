@@ -80,5 +80,18 @@
     ],
     "createdAt": "2025-10-18T03:01:42.100Z",
     "updatedAt": "2025-10-18T03:01:42.100Z"
+  },
+  {
+    "noteID": "68f30445279a34297c048d68",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T03:06:45.240Z",
+    "updatedAt": "2025-10-18T03:06:45.241Z"
   }
 ]
