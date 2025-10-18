@@ -81,7 +81,6 @@ const verifyJWT = (token, secret) => {
     }
 }
 
-
 const data = {
     name: "Luffy",
     id: 42343543405,
