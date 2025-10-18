@@ -54,5 +54,19 @@
     "email": "cat90Buglar@gmail.com",
     "hashedPassword": "$2b$10$GzFb4tyn62Afo.ID3QmAk.nrFcPPr5saPmL2Kmlbyd8aHdyJ.EN/C",
     "isActive": true
+  },
+  {
+    "id": "68f370e3bb6f7cedfa0d7a68",
+    "name": "Takamura",
+    "email": "st8raw@yahoo.com",
+    "hashedPassword": "$2b$10$Y8Gy/AEe/ONugRqtKm5KLeFJ0ROX1ByUrTIDa8l42twhnTxX8MGpS",
+    "isActive": true
+  },
+  {
+    "id": "68f3740278a9dc64740c4b21",
+    "name": "Takamura",
+    "email": "st8rasw@yahoo.com",
+    "hashedPassword": "$2b$10$rnsm0bIV/4iCo4jNHb0VKOI9yhKn0b7mbBl/Rp9LMqwmOc7VuJlqa",
+    "isActive": true
   }
 ]

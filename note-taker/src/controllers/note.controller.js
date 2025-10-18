@@ -11,7 +11,6 @@ export const makeNote = async (res, body) => {
 }
 
 export const getAllNotes = async (res, body) => {
-    console.log(body);
     try {
         const notes = await getNotes({ userID: body.userID });
         successResponse(res, notes, 201);
