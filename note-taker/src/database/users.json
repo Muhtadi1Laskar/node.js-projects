@@ -1,72 +1,37 @@
 [
   {
-    "id": "68f284d5ebe53aa9880a64ee",
-    "name": "luffy",
-    "email": "straw@gmail.com",
-    "hashedPassword": "$2b$10$iFhMVnO3wKbmx8la8wts/e3bD74UTdC5oO0fiXW7tRVyOFL9HOu5y",
+    "id": "68f39c7f20840b9b9f0d695f",
+    "name": "Luffy",
+    "email": "luffy@gmail.com",
+    "hashedPassword": "$2b$10$5jySgP8lGeP2XaZ6HQBKqeq8dhJy8DLCdIPlDVR4bakJt8I.1VS26",
     "isActive": true
   },
   {
-    "id": "68f2884cc5392b40540844c5",
-    "name": "luffy",
-    "email": "stsraw@gmail.com",
-    "hashedPassword": "$2b$10$zsSTPfSFEMBYOpo7esxfi.O.f42pp2A.S077Bm4HQDXlACclwRCce",
+    "id": "68f39c8f0552bc931a0d25cb",
+    "name": "Zoro",
+    "email": "zoro@gmail.com",
+    "hashedPassword": "$2b$10$rOoLXpNJcC88UpQ1AwhNKu4Vmr9s4Lz42MIVQHSH0rSw8griTy3W6",
     "isActive": true
   },
   {
-    "id": "68f2bb4681549afdc60c2676",
-    "name": "luffy",
-    "email": "st8raw@gmail.com",
-    "hashedPassword": "$2b$10$01lSjh/GxMFwtpUo2WcNnexk5ou.dg7Llc2r3QgkJ9O9gB9OwbGqa",
+    "id": "68f39c9bc7d5838e3702770c",
+    "name": "Sanji",
+    "email": "sanji@gmail.com",
+    "hashedPassword": "$2b$10$SXpnRdZAnnKjn6MSy7CgjOSLLg7eNeS8uL8eUcnn6ql05jo6G2BhS",
     "isActive": true
   },
   {
-    "id": "68f2c5bf573285186a0f2527",
-    "name": "luffy",
-    "email": "st8raw@gmsail.com",
-    "hashedPassword": "$2b$10$zp/l5XeaNq1N0Bd0d1KPoeJDXvcly8KbrsrIPkv/0owcG4/5EblaG",
+    "id": "68f39ca44aff8f6ee507fd7c",
+    "name": "Usopp",
+    "email": "usopp@gmail.com",
+    "hashedPassword": "$2b$10$13wddJES55jJZTCW4tgueOOp5rsFgpDfJf/h3Z94fXSr8iRp/k0am",
     "isActive": true
   },
   {
-    "id": "68f2c80c37a725cfb0044b1d",
-    "name": "zoro",
-    "email": "sword@gmail.csom",
-    "hashedPassword": "$2b$10$XuhRwktoir85YUraNMEQbOI7eAPcNrxSaePomp0xX0o6Ht47SCDJm",
-    "isActive": true
-  },
-  {
-    "id": "68f2c8182ecd90f40c09be65",
-    "name": "zoro",
-    "email": "sword@gmail.com",
-    "hashedPassword": "$2b$10$pyRyST8sFZSet33HVBZsK.XLZb3lI4hknQdDf91rgehOkIzPUCmPa",
-    "isActive": true
-  },
-  {
-    "id": "68f302ec04247758f30acb5d",
-    "name": "Jackie",
-    "email": "jackie@gmail.com",
-    "hashedPassword": "$2b$10$GPXv0qA1qogamjQ3vPSo9ORg/zdqGlD8fzxoNskS0B5jYGmvuEpCq",
-    "isActive": true
-  },
-  {
-    "id": "68f35fe0471d9137e00092ea",
+    "id": "68f39cac5e0baa18020241fa",
     "name": "Nami",
-    "email": "cat90Buglar@gmail.com",
-    "hashedPassword": "$2b$10$GzFb4tyn62Afo.ID3QmAk.nrFcPPr5saPmL2Kmlbyd8aHdyJ.EN/C",
-    "isActive": true
-  },
-  {
-    "id": "68f370e3bb6f7cedfa0d7a68",
-    "name": "Takamura",
-    "email": "st8raw@yahoo.com",
-    "hashedPassword": "$2b$10$Y8Gy/AEe/ONugRqtKm5KLeFJ0ROX1ByUrTIDa8l42twhnTxX8MGpS",
-    "isActive": true
-  },
-  {
-    "id": "68f3740278a9dc64740c4b21",
-    "name": "Takamura",
-    "email": "st8rasw@yahoo.com",
-    "hashedPassword": "$2b$10$rnsm0bIV/4iCo4jNHb0VKOI9yhKn0b7mbBl/Rp9LMqwmOc7VuJlqa",
+    "email": "nami@gmail.com",
+    "hashedPassword": "$2b$10$sZGcuZrMqn8MxzPMQBlmI.h.G6BnozNw0sMc3/ujJ8db5H6ylPSFm",
     "isActive": true
   }
 ]

@@ -12,6 +12,17 @@ export const readJSON = async (collectionName) => {
     }
 }
 
+export const writeNewJSON = async (collectionName, data) => {
+    const fullPath = path.join("src/database", `${collectionName}.json`);
+    try {
+        const dataString = JSON.stringify(data, null, 2);
+
+        await fs.writeFile(fullPath, dataString, "utf-8");
+    } catch(error) {
+        throw new Error(error);
+    }
+}
+
 export const writeJSON = async (collectionName, data) => {
     const fullPath = path.join("src/database", `${collectionName}.json`);
     try {

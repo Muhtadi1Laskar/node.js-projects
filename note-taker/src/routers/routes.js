@@ -1,9 +1,9 @@
-import { getAllNotes, makeNote } from "../controllers/note.controller.js";
+import { getAllNotes, makeNote, updateNotes } from "../controllers/note.controller.js";
 import { login, registerUser } from "../controllers/user.controller.js";
-import { allNotesSchema } from "../schema/getAllNotesSchema.js";
 import { loginSchema } from "../schema/loginSchema.js";
 import { noteSchema } from "../schema/noteSchema.js";
 import { registerSchema } from "../schema/registerSchema.js";
+import { updateSchema } from "../schema/updateSchema.js";
 
 const routes = {
     "POST:/register": {
@@ -20,6 +20,10 @@ const routes = {
     },
     "GET:/all-notes": {
         controller: getAllNotes
+    },
+    "PUT:/update-notes": {
+        controller: updateNotes,
+        schema: updateSchema
     }
 };
 

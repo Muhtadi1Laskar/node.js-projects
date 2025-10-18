@@ -1,4 +1,4 @@
-import { findUser, readJSON, writeJSON } from "../utils/database.js"
+import { findUser, readJSON, writeJSON, writeNewJSON } from "../utils/database.js"
 import { generateID } from "../utils/utils.js"
 
 export const createNote = async ({ title, content, tags, userID }) => {
@@ -22,6 +22,30 @@ export const createNote = async ({ title, content, tags, userID }) => {
     } catch (error) {
         throw new Error(error);
     }
+}
+
+export const updateNote = async ({ userID, noteID, fieldsToUpdate }) => {
+    const allNotes = await readJSON("note");
+    const noteIndex = allNotes.findIndex(note => note.userID === userID && note.noteID === noteID);
+
+    if(noteIndex === -1) {
+        throw new Error("Note not found for the specified user");
+    }
+
+    const updateNote = {
+        ...allNotes[noteIndex],
+        ...fieldsToUpdate,
+        updatedAt: new Date().toISOString()
+    }
+
+    allNotes[noteIndex] = updateNote;
+
+    await writeNewJSON("note", allNotes);
+
+    return {
+        message: "Successfully update the note",
+        note: updateNote
+    };
 }
 
 export const getNotes = async (query) => {
