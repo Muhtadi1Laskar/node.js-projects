@@ -40,5 +40,12 @@
     "email": "sword@gmail.com",
     "hashedPassword": "$2b$10$pyRyST8sFZSet33HVBZsK.XLZb3lI4hknQdDf91rgehOkIzPUCmPa",
     "isActive": true
+  },
+  {
+    "id": "68f302ec04247758f30acb5d",
+    "name": "Jackie",
+    "email": "jackie@gmail.com",
+    "hashedPassword": "$2b$10$GPXv0qA1qogamjQ3vPSo9ORg/zdqGlD8fzxoNskS0B5jYGmvuEpCq",
+    "isActive": true
   }
 ]

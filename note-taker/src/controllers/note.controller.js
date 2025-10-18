@@ -4,7 +4,7 @@ import { errorResponse, successResponse } from "../utils/response.js";
 export const makeNote = async (res, body) => {
     try {
         const note = await createNote(body);
-        successResponse(res, { message: note }, 201);
+        successResponse(res, note, 201);
     } catch (error) {
         errorResponse(res, { message: error.message }, 403);
     }

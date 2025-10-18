@@ -8,5 +8,77 @@
       "tech",
       "coding"
     ]
+  },
+  {
+    "noteID": "68f301611ec10baa5005f106",
+    "userID": "68f2c8182ecd90f40c09be65",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T02:54:25.026Z",
+    "updatedAt": "2025-10-18T02:54:25.027Z"
+  },
+  {
+    "noteID": "68f3025062bb33c1cf0bcbdc",
+    "userID": "68f2c8182ecd90f40c09be65",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T02:58:24.747Z",
+    "updatedAt": "2025-10-18T02:58:24.748Z"
+  },
+  {
+    "noteID": "68f30262a40f7b7cfd007557",
+    "userID": "68f2c8182ecd90f40c09be65",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T02:58:42.607Z",
+    "updatedAt": "2025-10-18T02:58:42.608Z"
+  },
+  {
+    "noteID": "68f30264a07e4db53705178a",
+    "userID": "68f2c8182ecd90f40c09be65",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T02:58:44.444Z",
+    "updatedAt": "2025-10-18T02:58:44.445Z"
+  },
+  {
+    "noteID": "68f3026f45428654f100d1bd",
+    "userID": "68f2c8182ecd90f40c09be65",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T02:58:55.189Z",
+    "updatedAt": "2025-10-18T02:58:55.190Z"
+  },
+  {
+    "noteID": "68f30316edc9460cfb0aa48f",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "createdAt": "2025-10-18T03:01:42.100Z",
+    "updatedAt": "2025-10-18T03:01:42.100Z"
   }
 ]

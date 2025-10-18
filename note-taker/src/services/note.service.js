@@ -7,7 +7,9 @@ export const createNote = async ({ title, content, tags, userID }) => {
         userID,
         title,
         content,
-        tags
+        tags,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
     };
 
     try {
