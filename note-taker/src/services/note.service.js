@@ -62,7 +62,7 @@ export const updateNote = async ({ userID, noteID, fieldsToUpdate }) => {
     };
 }
 
-export const deleteNote = async ({ userID, noteID, fieldsToUpdate }) => {
+export const deleteNote = async ({ userID, noteID }) => {
     const allNotes = await readJSON("note");
     const noteIndex = allNotes.findIndex(note => note.userID === userID && note.noteID === noteID);
 
