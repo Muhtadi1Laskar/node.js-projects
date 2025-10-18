@@ -93,5 +93,58 @@
     "archived": false,
     "createdAt": "2025-10-18T03:06:45.240Z",
     "updatedAt": "2025-10-18T03:06:45.241Z"
+  },
+  {
+    "noteID": "68f3590a12b20922020cb4d1",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "This is the first note",
+    "content": "This is the description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:08:26.721Z",
+    "updatedAt": "2025-10-18T09:08:26.721Z"
+  },
+  {
+    "noteID": "68f359160a208fcda40888bf",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "This is the second note",
+    "content": "This is the second description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:08:38.593Z",
+    "updatedAt": "2025-10-18T09:08:38.594Z"
+  },
+  {
+    "noteID": "68f3591d2a3f289fa901e399",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "This is the third note",
+    "content": "This is the third description",
+    "tags": [
+      "tech",
+      "coding"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:08:45.304Z",
+    "updatedAt": "2025-10-18T09:08:45.304Z"
+  },
+  {
+    "noteID": "68f35a969684d3b0fe0d7d6c",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "How to parse JSON file",
+    "content": "This tutorial teaches you how to parse a JSON file",
+    "tags": [
+      "tech",
+      "coding",
+      "JSON"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:15:02.770Z",
+    "updatedAt": "2025-10-18T09:15:02.770Z"
   }
 ]

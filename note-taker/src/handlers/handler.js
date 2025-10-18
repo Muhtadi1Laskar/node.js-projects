@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const endpoint = `${method}:${url}`;
     const route = routes[endpoint];
 
-    if (!route.controller) {
+    if (!route) {
         errorResponse(res, { message: "Invalid endpoint" }, 404);
         return;
     }
