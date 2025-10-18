@@ -6,6 +6,7 @@ import signSchema from "./schema/signSchema.js";
 import verifySchema from "./schema/verifySchema.js";
 
 const routes = {
+  
     "POST:/generateKey": {
         controller: generateKeyController,
         schema: keySchema,
