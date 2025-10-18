@@ -24,9 +24,9 @@ export const createNote = async ({ title, content, tags, userID }) => {
     }
 }
 
-export const getAllNote = async ({ usedID }) => {
+export const getNotes = async (query) => {
     try {
-        const notes = await findUser({ usedID }, "note");
+        const notes = await findUser(query, "note");
 
         if (notes.length === 0) {
             throw new Error("There are no notes under this userID");
