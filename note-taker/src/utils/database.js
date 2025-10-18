@@ -33,8 +33,8 @@ export const writeJSON = async (collectionName, data) => {
     }
 }
 
-export async function findUser(query) {
-    const userData = await readJSON("users");
+export async function findUser(query, collectionName = "users") {
+    const userData = await readJSON(collectionName);
     const keys = Object.keys(query);
 
     const matchingUsers = userData.filter(user => {
@@ -45,7 +45,7 @@ export async function findUser(query) {
     return matchingUsers;
 }
 
-export async function findOne(query) {
-    const data = await findUser(query);
+export async function findOne(query, collectionName = "users") {
+    const data = await findUser(query, collectionName);
     return data[0];
 }
