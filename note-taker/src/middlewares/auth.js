@@ -1,5 +1,4 @@
 import { checkTokenValidity } from "../utils/utils.js";
-import { errorResponse } from "../utils/response.js";
 
 export async function authMiddleware(req, res, next) {
     const endpoint = `${req.method}:${req.url}`;
@@ -10,7 +9,7 @@ export async function authMiddleware(req, res, next) {
     if(isPublicRoute) {
         return next();
     }
-    
+
     const userID = await checkTokenValidity(req, res);
     if (!userID) return;
 

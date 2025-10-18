@@ -13,7 +13,10 @@ export const makeNote = async (res, body) => {
 export const getAllNotes = async (res, body) => {
     try {
         const notes = await getNotes({ userID: body.userID });
-        successResponse(res, notes, 201);
+        successResponse(res, {
+            notes: notes,
+            totalNotes: notes.length
+        }, 201);
     } catch (error) {
         errorResponse(res, { message: error.message }, 403);
     }
