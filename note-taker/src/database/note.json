@@ -146,5 +146,63 @@
     "archived": false,
     "createdAt": "2025-10-18T09:15:02.770Z",
     "updatedAt": "2025-10-18T09:15:02.770Z"
+  },
+  {
+    "noteID": "68f35f0a7f7e1e9446071ff3",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "How to parse JSON file",
+    "content": "This tutorial teaches you how to parse a JSON file",
+    "tags": [
+      "tech",
+      "coding",
+      "JSON"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:34:02.660Z",
+    "updatedAt": "2025-10-18T09:34:02.660Z"
+  },
+  {
+    "noteID": "68f35f1741a07440bd0b5c7f",
+    "userID": "68f302ec04247758f30acb5d",
+    "title": "How to parse JSON file",
+    "content": "This tutorial teaches you how to parse a JSON file",
+    "tags": [
+      "tech",
+      "coding",
+      "JSON"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:34:15.882Z",
+    "updatedAt": "2025-10-18T09:34:15.882Z"
+  },
+  {
+    "noteID": "68f36044c8a902d37a0a7a5f",
+    "userID": "68f35fe0471d9137e00092ea",
+    "title": "Become Rich",
+    "content": "How to become the richest person in the world",
+    "tags": [
+      "rich",
+      "wealth",
+      "money",
+      "berry"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:39:16.122Z",
+    "updatedAt": "2025-10-18T09:39:16.122Z"
+  },
+  {
+    "noteID": "68f3614d2912565cbd008643",
+    "userID": "68f35fe0471d9137e00092ea",
+    "title": "How to invest money",
+    "content": "This is a note on investing money",
+    "tags": [
+      "rich",
+      "wealth",
+      "money",
+      "berry"
+    ],
+    "archived": false,
+    "createdAt": "2025-10-18T09:43:41.603Z",
+    "updatedAt": "2025-10-18T09:43:41.603Z"
   }
 ]

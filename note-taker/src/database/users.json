@@ -47,5 +47,12 @@
     "email": "jackie@gmail.com",
     "hashedPassword": "$2b$10$GPXv0qA1qogamjQ3vPSo9ORg/zdqGlD8fzxoNskS0B5jYGmvuEpCq",
     "isActive": true
+  },
+  {
+    "id": "68f35fe0471d9137e00092ea",
+    "name": "Nami",
+    "email": "cat90Buglar@gmail.com",
+    "hashedPassword": "$2b$10$GzFb4tyn62Afo.ID3QmAk.nrFcPPr5saPmL2Kmlbyd8aHdyJ.EN/C",
+    "isActive": true
   }
 ]

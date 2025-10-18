@@ -18,9 +18,8 @@ const routes = {
         controller: makeNote,
         schema: noteSchema
     },
-    "POST:/all-notes": {
-        controller: getAllNotes,
-        schema: allNotesSchema
+    "GET:/all-notes": {
+        controller: getAllNotes
     }
 };
 
