@@ -40,6 +40,7 @@ const createJWT = (payload, secret) => {
     const expiration = Math.floor(Date.now() / 1000) + (60 * 60);
     payload.exp = expiration;
 
+    
     const encodedHeader = base64urlEncode(JSON.stringify(header));
     const encodedPayload = base64urlEncode(JSON.stringify(payload));
     const tokenParts = `${encodedHeader}.${encodedPayload}`;
