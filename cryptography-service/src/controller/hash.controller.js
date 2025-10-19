@@ -8,7 +8,8 @@ const HASHES = crypto.getHashes();
 export const getAllHash = async (req, res, next) => {
     try {
         successResponse(res, {
-            hashes: HASHES || []
+            hashes: HASHES || [],
+            totalFunctions: HASHES.length
         }, 200);
     } catch (error) {
         next(error);
