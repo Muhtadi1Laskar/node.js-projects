@@ -17,17 +17,17 @@ export const getAllHash = async (req, res, next) => {
 }
 
 export const hashData = async (req, res, next) => {
-    const { algorithm } = req.body;
+    const { algorithm, data } = req.body;
 
     if (!HASHES.includes(algorithm)) {
         errorResponse(res, {
             message: `Invalid hash function. Try the following functions ${HASHES.join(', ')}`
-        }, 401);
+        }, 400);
         return;
     }
 
     try {
-        const hash = hashFunction(req.body);
+        const hash = hashFunction(data, algorithm);
         successResponse(res, { hash }, 200);
     } catch (error) {
         next(error);
@@ -35,7 +35,7 @@ export const hashData = async (req, res, next) => {
 }
 
 export const verifyHash = async (req, res, next) => {
-    const { algorithm, hash } = req.body;
+    const { algorithm, hash, data } = req.body;
 
     if (!HASHES.includes(algorithm)) {
         errorResponse(res, {
@@ -47,13 +47,27 @@ export const verifyHash = async (req, res, next) => {
     if (!isHexString(hash)) {
         errorResponse(res, {
             message: "Invalid hash string"
-        }, 401);
+        }, 400);
         return;
     }
 
     try {
-        const isSame = verifyHashData(req.body);
+        const isSame = verifyHashData(data, hash, algorithm);
         successResponse(res, { isSame }, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const multipleHash = async (req, res, next) => {
+    const { algorithms, data } = req.body;
+    try {
+        const results = algorithms.map(hash => {
+            return !HASHES.includes(hash) ?
+                { [hash]: 'Invalid Hash Function' } :
+                { [hash]: hashFunction(data, hash) }
+        });
+        successResponse(res, { results }, 200);
     } catch (error) {
         next(error);
     }
