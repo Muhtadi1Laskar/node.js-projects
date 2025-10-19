@@ -76,8 +76,8 @@ export const multipleHash = async (req, res, next) => {
 export const hashFile = async (req, res, next) => {
     const { originalname, mimetype, buffer, size } = req.file;
     const algorithm = req.body.hash;
-
     const text = buffer.toString();
+    
     try {
         const hash = hashFunction(text, algorithm);
         successResponse(res, { hash }, 200)
