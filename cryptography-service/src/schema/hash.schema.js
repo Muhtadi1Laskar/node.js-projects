@@ -15,7 +15,7 @@ export const hashDataSchema = Joi.object({
     data: Joi.string()
         .required()
         .messages({
-            "any.required": "Dta field is required",
+            "any.required": "Data field is required",
             "string.empty": "Data cannot be empty"
         })
 });
@@ -25,7 +25,7 @@ export const verifyHashSchema = Joi.object({
         .valid(...HASHES)
         .required()
         .messages({
-            "any.required": "Hash algorithm is required",
+            "any.string.": "Hash algorithm is required",
             "any.only": `Invalid hash algorithm. Use one of: ${HASHES.join(', ')}`
         }),
 
