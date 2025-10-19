@@ -1,4 +1,4 @@
-import crypto from "node:crypto";
+import crypto, { hash } from "node:crypto";
 import { hashFunction, verifyHashData } from "../services/hash.service.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 import { isHexString } from "../utils/utils.js";
@@ -70,5 +70,18 @@ export const multipleHash = async (req, res, next) => {
         successResponse(res, { results }, 200);
     } catch (error) {
         next(error);
+    }
+}
+
+export const hashFile = async (req, res, next) => {
+    const { originalname, mimetype, buffer, size } = req.file;
+    const algorithm = req.body.hash;
+
+    const text = buffer.toString();
+    try {
+        const hash = hashFunction(text, algorithm);
+        successResponse(res, { hash }, 200)
+    } catch (error) {
+        next(error)
     }
 }

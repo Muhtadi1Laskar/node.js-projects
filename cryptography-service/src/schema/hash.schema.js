@@ -62,3 +62,13 @@ export const multipleHashSchema = Joi.object({
             "any.required": "Data field is required"
         })
 });
+
+export const hashFileSchema = Joi.object({
+    hash: Joi.string()
+        .valid(...HASHES)
+        .required()
+        .messages({
+            "any.required": "Hash algorithm is required",
+            "any.only": `Invalid hash algorithm. Use one of: ${HASHES.join(', ')}`
+        })
+})
