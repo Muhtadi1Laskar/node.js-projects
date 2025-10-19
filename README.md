@@ -1,4 +1,4 @@
-# 🧠 Node.js Cryptography Projects Collection
+# 🧠 Node.js Projects Collection
 
 A collection of Node.js-based projects exploring **core cryptographic concepts**, **security primitives**, and **backend fundamentals** — all built **without frameworks** to deeply understand the underlying mechanisms of cryptography, data integrity, and authentication systems.
 
