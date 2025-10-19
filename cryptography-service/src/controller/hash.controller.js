@@ -9,7 +9,9 @@ export const hashData = async (req, res, next) => {
     const { algorithm } = req.body;
 
     if (!HASHES.includes(algorithm)) {
-        errorResponse(res, `Invalid hash function. Try the following functions ${HASHES.join(', ')}`, 401);
+        errorResponse(res, {
+            message: `Invalid hash function. Try the following functions ${HASHES.join(', ')}`
+        }, 401);
         return;
     }
 
@@ -25,12 +27,16 @@ export const verifyHash = async (req, res, next) => {
     const { algorithm, hash } = req.body;
 
     if (!HASHES.includes(algorithm)) {
-        errorResponse(res, `Invalid hash function. Try the following functions ${HASHES.join(', ')}`, 401);
+        errorResponse(res, {
+            message: `Invalid hash function. Try the following functions ${HASHES.join(', ')}`
+        }, 401);
         return;
     }
 
-    if(!isHexString(hash)) {
-        errorResponse(res, "Invalid hash string", 401);
+    if (!isHexString(hash)) {
+        errorResponse(res, {
+            message: "Invalid hash string"
+        }, 401);
         return;
     }
 
