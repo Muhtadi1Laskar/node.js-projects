@@ -7,6 +7,6 @@ import { verifyHashSchema } from "../schema/verifyHash.schema.js";
 const router = express.Router();
 
 router.post("/hash-data", validate(hashSchema), hashData);
-router.post("/verify-hash", validate(verifyHashSchema), verifyHash);
+router.post("/compare-hash", validate(verifyHashSchema), verifyHash);
 
 export default router;
