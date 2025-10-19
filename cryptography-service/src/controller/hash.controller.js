@@ -5,6 +5,16 @@ import { isHexString } from "../utils/utils.js";
 
 const HASHES = crypto.getHashes();
 
+export const getAllHash = async (req, res, next) => {
+    try {
+        successResponse(res, {
+            hashes: HASHES || []
+        }, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const hashData = async (req, res, next) => {
     const { algorithm } = req.body;
 
