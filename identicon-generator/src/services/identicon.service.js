@@ -15,7 +15,7 @@ class IdenticonGenerator {
         this.cellSize = this.size / 5;
         this.hash = this._generateHash();
         this.color = this._pickColor();
-        this.grid = this._buildGrid();
+        this.grid = this._buildGrid()
     }
 
     _generateHash() {
@@ -60,7 +60,7 @@ class IdenticonGenerator {
         }).png().toBuffer();
 
         this.grid.forEach((value, index) => {
-            if(value % 2 === 0) {
+            if (value % 2 === 0) {
                 const x = (index % 5) * this.cellSize;
                 const y = Math.floor(index / 5) * this.cellSize;
                 colordSquares.push({
@@ -79,9 +79,9 @@ class IdenticonGenerator {
                 background: this.backgroundColor
             }
         })
-        .composite(colordSquares)
-        .png()
-        .toBuffer();
+            .composite(colordSquares)
+            .png()
+            .toBuffer();
 
         return imageBuffer.toString("base64");
     }

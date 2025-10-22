@@ -2,8 +2,8 @@ import crypto from "node:crypto";
 import { writeResponse } from "../utils/utils.js";
 import IdenticonGenerator from "../services/identicon.service.js";
 
-export const generateIdenticon = async (req, res) => {
-    const { data, hash } = req.body;
+export const generateIdenticon = async (res, body) => {
+    const { data, hash } = body;
     const hashes = crypto.getHashes();
 
     if(!hashes.includes(hash)) {
@@ -25,7 +25,7 @@ export const generateIdenticon = async (req, res) => {
             hashAlgorithm: hash
         });
         const identiconBase64String = await identicon.generate();
-        writeResponse(200, { identiconBase64String }, 200);
+        writeResponse(res, { identiconBase64String }, 200);
         return;
     } catch (error) {
         writeResponse(res, { message: error.message }, 404);

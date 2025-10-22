@@ -1,5 +1,5 @@
 export const writeResponse = (res, data, statusCode = 200) => {
-    res.WriteHead(statusCode, { "content-type": "application/json" });
+    res.writeHead(statusCode, { "content-type": "application" });
     res.end(JSON.stringify(data));
 }
 
@@ -15,7 +15,7 @@ export const parseRequestBody = (req) => {
                 resolve(body);
             }
         });
-        res.on("error", reject);
+        req.on("error", reject);
     });
 }
 

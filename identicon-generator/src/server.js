@@ -1,12 +1,10 @@
 import { createServer } from "node:http";
+import { identiconHandler } from "./handler/identicon.handler.js";
 
 const PORT = 8080;
 
-const server = createServer((req, res) => {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ "message": "Hello World" }));
-});
+const server = createServer(identiconHandler);
 
 server.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}`);``
+    console.log(`Server is running on port: ${PORT}`); ``
 });
