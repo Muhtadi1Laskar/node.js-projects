@@ -1,0 +1,18 @@
+{
+  "name": "identicon-generator",
+  "version": "1.0.0",
+  "description": "A simple app that generates identicon",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "author": "Muhtadi Laskar",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "sharp": "^0.34.4"
+  }
+}
