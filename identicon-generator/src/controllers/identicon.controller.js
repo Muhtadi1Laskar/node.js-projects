@@ -24,8 +24,8 @@ export const generateIdenticon = async (res, body) => {
         const identicon = new IdenticonGenerator(data, {
             hashAlgorithm: hash
         });
-        const identiconBase64String = await identicon.generate();
-        writeResponse(res, { identiconBase64String }, 200);
+        const base64String = await identicon.generate();
+        writeResponse(res, { base64String }, 200);
         return;
     } catch (error) {
         writeResponse(res, { message: error.message }, 404);
