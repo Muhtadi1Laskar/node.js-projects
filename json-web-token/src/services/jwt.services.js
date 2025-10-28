@@ -40,3 +40,39 @@ const createJWT = (payload, secret) => {
 
     return `${tokenParts}.${signature}`;
 }
+
+const verifyJWT = (token, secret) => {
+    try {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            console.error("Invalid token format");
+            throw new Error("Invalid token format");
+        }
+
+        const [encodedHeader, encodedPayload, signature] = parts;
+        const tokenParts = `${encodedHeader}.${encodedPayload}`;
+
+        const expectedSignature = signToken(tokenParts, secret);
+
+        const recievedSigBuffer = Buffer.from(signature);
+        const expectedSigBuffer = Buffer.from(expectedSignature);
+
+        if (recievedSigBuffer.length !== expectedSigBuffer.length ||
+            !crypto.timingSafeEqual(recievedSigBuffer, expectedSigBuffer)) {
+            console.error("Signature verification failed");
+            throw new Error("Signature verification failed");
+        }
+
+        const payloadStr = base64urlDecode(encodedPayload);
+        const payload = JSON.parse(payloadStr);
+
+        const now = Math.floor(Date.now() / 1000);
+        if (payload.exp < now) {
+            console.error("Token expired");
+            throw new Error("Token expired");
+        }
+        return payload;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
