@@ -23,3 +23,20 @@ const signToken = (tokenParts, secret) => {
         .replace(/\//g, '_')
         .replace(/=+$/, '');
 }
+
+const createJWT = (payload, secret) => {
+    const header = {
+        alg: "HS256",
+        type: "JWT"
+    };
+
+    const expiration = Math.floor(Date.now() / 1000) + (60 * 60);
+    payload.exp = expiration;
+
+    const encodedHeader = base64urlEncode(JSON.stringify(header));
+    const encodedPayload = base64urlEncode(JSON.stringify(payload));
+    const tokenParts = `${encodedHeader}.${encodedPayload}`;
+    const signature = signToken(tokenParts, secret);
+
+    return `${tokenParts}.${signature}`;
+}
