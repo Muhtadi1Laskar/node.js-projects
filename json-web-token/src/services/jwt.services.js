@@ -15,3 +15,11 @@ const base64urlDecode = (data) => {
         .toString('utf8');
 }
 
+const signToken = (tokenParts, secret) => {
+    return crypto.createHmac("sha256", secret)
+        .update(tokenParts)
+        .digest("base64")
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+}
