@@ -76,3 +76,17 @@ const verifyJWT = (token, secret) => {
         throw new Error(error);
     }
 }
+
+const data = {
+    name: "Luffy",
+    id: 42343543405,
+    occupation: "Pirate"
+};
+
+const JWT_SECRET = "SE$%_()#";
+
+const token = createJWT(data, JWT_SECRET);
+const payload = verifyJWT(token, JWT_SECRET)
+
+console.log(token);
+console.log(payload);
