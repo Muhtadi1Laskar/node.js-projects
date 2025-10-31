@@ -19,3 +19,34 @@ export const parseRequest = (req) => {
     });
 }
 
+export const validateSchema = (schema, body) => {
+    const errors = [];
+    const parsedBody = typeof body === "string" ? JSON.stringify(body) : body;
+
+    for (const elem in schema) {
+        if (!parsedBody.hasOwnProperty(elem)) {
+            errors.push(`Missing field(s): ${elem}`);
+            continue;
+        }
+
+        const expectedType = schema[elem];
+        const actualType = typeof parsedBody[elem];
+
+        if (expectedType !== actualType) {
+            errors.push(`Field '${key}' should be of type '${expectedType}', got '${actualType}'`);
+        }
+    }
+
+    if (errors.length > 0) {
+        return {
+            valid: false,
+            message: errors.join(', ')
+        };
+    }
+
+    return {
+        valid: true,
+        data: parsedBody
+    };
+}
+
