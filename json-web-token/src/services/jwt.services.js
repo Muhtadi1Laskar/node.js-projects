@@ -24,7 +24,7 @@ const signToken = (tokenParts, secret) => {
         .replace(/=+$/, '');
 }
 
-const createJWT = (payload, secret) => {
+export const createJWT = (payload, secret) => {
     const header = {
         alg: "HS256",
         type: "JWT"
@@ -41,7 +41,7 @@ const createJWT = (payload, secret) => {
     return `${tokenParts}.${signature}`;
 }
 
-const verifyJWT = (token, secret) => {
+export const verifyJWT = (token, secret) => {
     try {
         const parts = token.split('.');
         if (parts.length !== 3) {
