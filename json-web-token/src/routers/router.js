@@ -1,13 +1,13 @@
-import { generateJWTController } from "../controllers/jwt.controller.js";
+import { generateJWTController, verifyJWTController } from "../controllers/jwt.controller.js";
 import { generateJWTSchema, verifyJWTSchmea } from "../schema/jwt.schema.js";
 
 export const router = {
     "POST:/jwt/create": {
-        contorller: generateJWTController,
+        controller: generateJWTController,
         schema: generateJWTSchema
     },
     "POST:/jwt/verify": {
-        controller: '',
+        controller: verifyJWTController,
         schema: verifyJWTSchmea
     }
 };

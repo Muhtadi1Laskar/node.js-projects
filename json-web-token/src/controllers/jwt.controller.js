@@ -1,5 +1,5 @@
 import { createJWT, verifyJWT } from "../services/jwt.services.js";
-import { writeResponse } from "../utils/utils";
+import { writeResponse } from "../utils/utils.js";
 
 export async function generateJWTController(res, req) {
     const {

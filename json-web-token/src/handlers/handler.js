@@ -14,10 +14,10 @@ export const handler = async (req, res) => {
     let body = {};
     if (method === "POST") {
         const rawBody = await parseRequest(req);
-        const { valid, message } = validateSchema(rawBody, route.scheme);
+        const { valid, message } = validateSchema(rawBody, route.schema);
 
         if (!valid) {
-            writeResponse(res, { message });
+            writeResponse(res, { message }, 404);
             return;
         }
 

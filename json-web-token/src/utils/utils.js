@@ -7,7 +7,7 @@ export const parseRequest = (req) => {
     return new Promise((resolve, reject) => {
         let body = '';
 
-        req.on("data", chunk => (chunk += data));
+        req.on("data", chunk => (body += chunk.toString()));
         req.on("end", () => {
             try {
                 resolve(JSON.parse(body));
@@ -19,18 +19,20 @@ export const parseRequest = (req) => {
     });
 }
 
-export const validateSchema = (schema, body) => {
+export const validateSchema = (body, schema) => {
     const errors = [];
-    const parsedBody = typeof body === "string" ? JSON.stringify(body) : body;
+    const parsedBody = typeof body === "string" ? JSON.parse(body) : body;
 
-    for (const elem in schema) {
-        if (!parsedBody.hasOwnProperty(elem)) {
-            errors.push(`Missing field(s): ${elem}`);
+    console.log(schema, body);
+
+    for (const key in schema) {
+        if (!parsedBody.hasOwnProperty(key)) {
+            errors.push(`Missing field(s): ${key}`);
             continue;
         }
 
-        const expectedType = schema[elem];
-        const actualType = typeof parsedBody[elem];
+        const expectedType = schema[key];
+        const actualType = typeof parsedBody[key];
 
         if (expectedType !== actualType) {
             errors.push(`Field '${key}' should be of type '${expectedType}', got '${actualType}'`);
@@ -40,13 +42,12 @@ export const validateSchema = (schema, body) => {
     if (errors.length > 0) {
         return {
             valid: false,
-            message: errors.join(', ')
+            message: errors.join('; ')
         };
     }
 
     return {
         valid: true,
-        data: parsedBody
+        message: parsedBody
     };
 }
-
