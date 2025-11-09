@@ -22,8 +22,8 @@ export async function verifyJWTController(res, req) {
     } = req;
 
     try {
-        const isValidToken = verifyJWT(token, secretKey);
-        writeResponse(res, { isValidToken });
+        const payload = verifyJWT(token, secretKey);
+        writeResponse(res, { payload });
     } catch (error) {
         writeResponse(res, { message: error });
     }
