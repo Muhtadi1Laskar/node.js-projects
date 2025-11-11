@@ -3,7 +3,7 @@ export const checkStrength = (password) => {
     const analysis = {
         length: password.length,
         hasLowercase: /[a-z]/.test(password),
-        hasUpperCase: /[A-Z]/.text(password),
+        hasUpperCase: /[A-Z]/.test(password),
         hasNumbers: /\d/.test(password),
         hasSymbols: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>?]/.test(password),
         commonPatterns: {
@@ -21,7 +21,7 @@ export const checkStrength = (password) => {
     if (analysis.hasSymbols) score += 1;
 
     if (analysis.commonPatterns.sequential) score -= 1
-    if (analysis.commonPattern.repeated) score -= 1
+    if (analysis.commonPatterns.repeated) score -= 1
 
     analysis.strength = score <= 3 ? 'weak' : score <= 5 ? 'medium' : score <= 7 ? 'strong' : 'very strong';
     analysis.score = Math.max(0, Math.min(10, score * 1.4));

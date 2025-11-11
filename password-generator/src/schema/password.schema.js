@@ -73,6 +73,7 @@ export const strengthSchema = Joi.object({
         .required()
         .messages({
             "any.required": "Password is required",
+            "string.base": "Password must be a string",
             "string.empty": "Password cannot be empty"
         })
 }).required().messages({ "any.required": "Payload is required" });
