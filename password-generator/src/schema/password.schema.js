@@ -32,11 +32,13 @@ export const passwordSchema = Joi.object({
 
 export const passphraseSchema = Joi.object({
     words: Joi.number()
+        .required()
         .integer()
         .min(2)
         .max(10)
         .default(4)
         .messages({
+            'any.required': 'Words is required',
             'number.base': 'Words must be a number',
             'number.integer': 'Words must be an integer',
             'number.min': 'Words must be at least 2',

@@ -4,11 +4,12 @@ import {
     passphraseSchema, passwordSchema, strengthSchema
 } from "../schema/password.schema.js";
 import { generatePasswordController } from "../controllers/password.controller.js";
+import { passphraseController } from "../controllers/passphrase.controller.js";
 
 const router = express.Router();
 
 router.post("/generate", validate(passwordSchema), generatePasswordController);
-router.post("/passphrase", validate(passphraseSchema));
+router.post("/passphrase", validate(passphraseSchema), passphraseController);
 router.post("/strength", validate(strengthSchema));
 
 export default router;
