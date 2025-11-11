@@ -3,6 +3,6 @@ import passwordRouter from "./password.routes.js";
 
 const router = express.Router();
 
-router.post("/operation", passwordRouter);
+router.use("/operation", passwordRouter);
 
 export default router;

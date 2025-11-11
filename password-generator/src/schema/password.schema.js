@@ -1,5 +1,7 @@
 import Joi from "joi";
 
+const types = ["lower", "upper", "digits", "symbols"];
+
 export const passwordSchema = Joi.object({
     length: Joi.number()
         .integer()
@@ -15,13 +17,14 @@ export const passwordSchema = Joi.object({
         }),
 
     types: Joi.array()
-        .valid(["lower", "upper", "digits", "symbols"])
+        .items(Joi.string().valid('lower', 'upper', 'digits', 'symbols'))
         .min(1)
+        .required()
         .messages({
             "array.base": "Types must be an array",
-            "any.required": "Types is required",
             "array.min": "At least one type must be selected",
-            "string.only": "Invalid type. Use one of the ['lower', 'upper', 'digits', 'symbols']"
+            "any.required": "Types is required",
+            "string.only": "Invalid type found. Use only: 'lower', 'upper', 'digits', 'symbols'"
         })
 
 }).required().messages({ "any.required": "Payload is required" });
