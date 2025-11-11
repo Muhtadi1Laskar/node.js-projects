@@ -21,8 +21,8 @@ const generatePassword = (len, passwordTypes) => {
     }
 
     let charPool = "";
-    for (const type of passwordTypes) {
-        charPool += types[type] || "";
+    for(let i = 0; i < passwordTypes.length; i++) {
+        charPool += types[passwordTypes[i]] || "";
     }
 
     while (result.length < len) {
@@ -37,6 +37,8 @@ const generatePassword = (len, passwordTypes) => {
     return result.join("");
 }
 
+
+
 const selectedTypes = ["upper", "lower", "digits", "symbols"];
 
-console.log(generatePassword(10, selectedTypes));
+console.log(generatePassword(5, selectedTypes));
