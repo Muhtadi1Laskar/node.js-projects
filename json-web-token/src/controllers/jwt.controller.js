@@ -7,6 +7,11 @@ export async function generateJWTController(res, req) {
         secretKey
     } = req;
 
+    if(Array.isArray(data)) {
+        writeResponse(res, { message: "Data must be an object" });
+        return;
+    }
+
     try {
         const token = createJWT(data, secretKey);
         writeResponse(res, { token });
