@@ -41,4 +41,4 @@ const generatePassword = (len, passwordTypes) => {
 
 const selectedTypes = ["upper", "lower", "digits", "symbols"];
 
-console.log(generatePassword(5, selectedTypes));
+console.log(generatePassword(10, selectedTypes));
