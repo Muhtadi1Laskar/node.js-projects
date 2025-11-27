@@ -1,0 +1,12 @@
+{
+  "name": "check-duplicate-files",
+  "version": "1.0.0",
+  "description": "A script to check duplicate files in a folder",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhtadi Laskar",
+  "license": "ISC"
+}
