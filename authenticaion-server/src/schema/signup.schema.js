@@ -11,7 +11,6 @@ export const signupSchema = Joi.object({
         }),
 
     phone: Joi.string()
-        .pattern(/^[\+]?[1-9][\d]{0,15}$/)
         .required()
         .messages({
             "string.pattern.base": "Phone must be a valid internation format",
