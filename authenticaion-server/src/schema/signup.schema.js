@@ -22,7 +22,7 @@ export const signupSchema = Joi.object({
         .min(1)
         .max(50)
         .required()
-        .pattern(/^[a-zA-Z\u00C0-\u017F\s\-']+$/) 
+        .pattern(/^[a-zA-Z\u00C0-\u017F\s\-']+$/)
         .messages({
             'string.min': 'First name must be at least 1 character',
             'string.max': 'First name cannot exceed 50 characters',
@@ -46,12 +46,20 @@ export const signupSchema = Joi.object({
     password: Joi.string()
         .min(8)
         .max(128)
-        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/) 
+        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/)
         .required()
         .messages({
             'string.min': 'Password must be at least 8 characters',
             'string.max': 'Password cannot exceed 128 characters',
             'string.pattern.base': 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
             'any.required': 'Password is required'
+        }),
+
+    role: Joi.string()
+        .required()
+        .valid("admin", "user")
+        .messages({
+            "any.required": "Role is required",
+            "any.only": "Role should be either 'user' or 'admin'"
         })
 });

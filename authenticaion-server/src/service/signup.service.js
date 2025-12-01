@@ -1,17 +1,20 @@
+import bcrypt from "bcrypt";
 import singupModel from "../models/users.model.js";
+import { ApiError } from "../utils/error.js";
 
-export const signup = async ({ email, phone, firstName, lastName, password }) => {
-    const timestamp = new Date().toISOString();
-
+export const signup = async ({ email, phone, firstName, lastName, password, role }) => {
     const existing = await singupModel.findOne({ email });
-    if (existing) throw new Error("User with this email already exists");
+    if (existing) throw new ApiError(409, "User with this email already exists");
 
+    const encryptedPassword = await bcrypt.hash(password, 10);
     const user = await singupModel.create({
         email,
         phone,
         firstName,
         lastName,
-        password
+        role,
+        password: encryptedPassword,
+        isActive: false
     });
 
     await user.save();
@@ -19,7 +22,6 @@ export const signup = async ({ email, phone, firstName, lastName, password }) =>
     return {
         id: user._id,
         firstName: user.firstName,
-        lastName: user.lastName,
-        phone: user.phone
+        lastName: user.lastName
     };
 }
