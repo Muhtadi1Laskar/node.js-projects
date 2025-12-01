@@ -1,5 +1,5 @@
 import { signup } from "../service/signup.service.js";
-import { errorResponse, successResponse } from "../utils/response.js";
+import { successResponse } from "../utils/response.js";
 
 export default async function signupController(req, res, next) {
     try {
