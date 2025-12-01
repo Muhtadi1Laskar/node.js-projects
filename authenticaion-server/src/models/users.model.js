@@ -8,4 +8,6 @@ const SignupSchema = new mongoose.Schema({
     password: { type: String, required: true },
 });
 
-export default SignupSchema;
+const singupModel = mongoose.model("user", SignupSchema);
+
+export default singupModel;

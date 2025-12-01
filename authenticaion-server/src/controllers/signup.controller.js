@@ -1,3 +1,4 @@
+import { signup } from "../service/signup.service.js";
 import { successResponse } from "../utils/response.js";
 
 export default async function signupController(req, res, next) {
@@ -10,7 +11,8 @@ export default async function signupController(req, res, next) {
     } = req.body;
 
     try {
-        successResponse(res, { "message": "Success Bitch" }, 200);
+        const user = await signup(req.body);
+        successResponse(res, user, 200);
     } catch (error) {
         next(error);
     }
