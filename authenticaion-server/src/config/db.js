@@ -1,13 +1,17 @@
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
+import { fileURLToPath } from 'url';
+import { dirname, join } from "path";
 
-dotenv.config({ path: "./.env" });
 
-const mongoDBURL = "mongodb://localhost:27017/";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config({ path: join(__dirname, '../.env') });
 
 export const connectDB = async () => {
     try {
-        await mongoose.connect(mongoDBURL);
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log("✅ MongoDB connected");
     } catch (error) {
         console.error('❌ MongoDB connection error:', error.message);
