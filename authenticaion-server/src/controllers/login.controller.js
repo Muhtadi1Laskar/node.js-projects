@@ -5,7 +5,7 @@ export default async function loginController(req, res, next) {
     try {
         const loginSuccess = await login(req.body);
         successResponse(res, loginSuccess, 200);
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }
