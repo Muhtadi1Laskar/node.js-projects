@@ -23,7 +23,7 @@ export const signup = async ({ email, phone, firstName, lastName, password, role
         activationToken: hashedToken,
         activationTokenExpiry: Date.now() + 3600000
     });
-    const activationLink = `http://localhost:8080/api/signup/activate/${plainToken}`;
+    const activationLink = `${process.env.ACTIVATE_URL}/${plainToken}`;
 
     return {
         id: user._id,
