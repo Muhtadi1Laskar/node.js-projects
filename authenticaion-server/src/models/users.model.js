@@ -8,6 +8,7 @@ const SignupSchema = new mongoose.Schema({
     password: { type: String, required: true },
     isActive: { type: Boolean, required: true },
     role: { type: String, required: true },
+    activationToken: { type: String, rrequired: true }
 }, {
     timestamps: true
 }
