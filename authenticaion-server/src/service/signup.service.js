@@ -1,20 +1,15 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import singupModel from "../models/users.model.js";
 import { ApiError } from "../utils/error.js";
+import { generateActivationToken } from "../utils/utils.js";
 
 export const signup = async ({ email, phone, firstName, lastName, password, role }) => {
     const existing = await singupModel.findOne({ email });
     if (existing) throw new ApiError(409, "User with this email already exists");
 
-    const payload = {
-        email
-    };
-    const activationToken = jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: '1h' },
-    );
+
+    const plainToken = generateActivationToken();
+    const hashedToken = await bcrypt.hash(plainToken, 10);
 
     const encryptedPassword = await bcrypt.hash(password, 10);
     const user = await singupModel.create({
@@ -25,11 +20,10 @@ export const signup = async ({ email, phone, firstName, lastName, password, role
         role,
         password: encryptedPassword,
         isActive: false,
-        activationToken
+        activationToken: hashedToken,
+        activationTokenExpiry: Date.now() + 3600000
     });
-    const activationLink = `http://localhost:8080/api/activate/?email=${email}&token=${activationToken}`
-
-    await user.save();
+    const activationLink = `http://localhost:8080/api/signup/activate/${plainToken}`;
 
     return {
         id: user._id,
