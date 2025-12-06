@@ -8,5 +8,4 @@ const router = express.Router();
 router.post("/", validate(signupSchema), signupController);
 router.post("/activate/:token", activateController);
 
-
 export default router;
