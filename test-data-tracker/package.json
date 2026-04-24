@@ -1,0 +1,24 @@
+{
+  "name": "test-data-tracker",
+  "version": "1.0.0",
+  "description": "A test data tracker made with node.js",
+  "license": "ISC",
+  "author": "Muhtadi Laskar",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.14"
+  }
+}
