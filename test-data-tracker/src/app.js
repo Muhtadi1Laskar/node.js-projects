@@ -3,13 +3,14 @@ import cors from "cors";
 import helment from "helmet";
 import morgan from "morgan";
 import { errorHandler } from "./middleware/errorHandler.js";
-import router from "./router/index.js";
+import router from "./routes/index.js";
 
 const app = express();
 
 app.use(cors());
 app.use(helment());
-app.use("./api", router);
+app.use(express.json());
+app.use(morgan("dev"));
 
 app.use("/api", router);
 app.use(errorHandler);
