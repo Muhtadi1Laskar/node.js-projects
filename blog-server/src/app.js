@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helment";
-import { errorHandler } from "../middleware/errorHandler.js";
+import router from "./routes/signup.routes.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
