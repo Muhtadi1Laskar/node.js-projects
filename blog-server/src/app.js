@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
-import helmet from "helment";
-import router from "./routes/signup.routes.js";
+import helmet from "helmet";
 import { errorHandler } from "./middleware/errorHandler.js";
+import router from "./routes/index.routes.js";
+import createUserTable from "./data/createUserTable.js";
 
 const app = express();
 
@@ -12,5 +13,7 @@ app.use(express.json());
 
 app.use("/api", router);
 app.use(errorHandler);
+
+createUserTable();
 
 export default app;
