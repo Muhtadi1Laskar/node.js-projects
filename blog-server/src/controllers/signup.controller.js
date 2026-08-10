@@ -2,7 +2,6 @@ import { activateUser, signup } from "../service/signup.service.js";
 import { successResponse } from "../utils/response.js";
 
 export default async function SignupController(req, res, next) {
-    console.log("Endpoint hit");
     try {
         const token = await signup(req.body);
         successResponse(res, token, 201);
