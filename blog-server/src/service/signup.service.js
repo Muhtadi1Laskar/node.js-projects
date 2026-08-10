@@ -9,7 +9,7 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
     const res = await pool.query(query, [email]);
     const existing = res.rows[0].exists;
 
-    if (existing) throw new ApiError(409, "User already exists");
+    if (existing) throw new ApiError(409, "User already exists with the given email");
 
     const plainToken = generateActivationToken();
     const hashedToken = await bcrypt.hash(plainToken, 10);
