@@ -34,3 +34,15 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
 export const activateUser = async (token) => {
     return;
 }
+
+
+export const getAllUser = async () => {
+    const query = "SELECT firstname, lastname, email, phone FROM users";
+    const result = await pool.query(query);
+
+    if(!result) throw new ApiError(405, "Failed to call database to retrive all users");
+
+    const users = result.rows.length > 0 ?  result.rows : { message: "The database is empty" };
+
+    return users;
+}
