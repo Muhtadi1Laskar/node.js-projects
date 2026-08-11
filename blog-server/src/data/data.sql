@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS users (
     passwords VARCHAR(30) NOT NULL,
     isActive BOOLEAN NOT NULL, 
     activationToken VARCHAR(255) NOT NULL,
-
+    activationTokenExpiry BIGINT NOT NULL,
     createdAt TIMESTAMP DEFAULT NOW()
 );

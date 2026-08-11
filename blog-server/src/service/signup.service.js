@@ -15,11 +15,11 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
     const hashedToken = await bcrypt.hash(plainToken, 10);
 
     const encryptedPassword = await bcrypt.hash(passwords, 10);
-    const activationExpiry = Date.now() + 3600000;
+    const activationExpiryDate = Date.now() + 3600000;
 
     const user = await pool.query(
-        "INSERT INTO users (firstName, lastName, phone, email, roles, passwords, isActive, activationToken) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-        [firstName, lastName, phone, email, roles, passwords, isActive, hashedToken]
+        "INSERT INTO users (firstName, lastName, phone, email, roles, passwords, isActive, activationToken, activationTokenExpiry) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+        [firstName, lastName, phone, email, roles, passwords, isActive, hashedToken, activationExpiryDate]
     );
     const activationLink = `${process.env.ACTIVATION_URL}/${plainToken}`;
     const { firstname, lastname } = user.rows[0];
