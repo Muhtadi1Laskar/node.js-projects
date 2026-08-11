@@ -9,7 +9,7 @@ const createUserTable = async () => {
         email VARCHAR(30) NOT NULL,
         phone INT NOT NULL,
         roles VARCHAR(10) NOT NULL,
-        passwords VARCHAR(30) NOT NULL,
+        passwords VARCHAR(256) NOT NULL,
         isActive BOOLEAN NOT NULL, 
         activationTokenId VARCHAR(36) NOT NULL,
         activationTokenHash VARCHAR(255) NOT NULL,

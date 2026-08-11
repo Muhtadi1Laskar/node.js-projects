@@ -12,7 +12,8 @@ export default async function SignupController(req, res, next) {
 
 export async function ActivateController(req, res, next) {
     try {
-        const response = await activateUser(req.params.token);
+        const { tokenId, tokenSecret } = req.params;
+        const response = await activateUser(tokenId, tokenSecret);
         successResponse(res, { message: response }, 200);
     } catch(error) {
         next(error);

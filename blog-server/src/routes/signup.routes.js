@@ -4,7 +4,7 @@ import SignupController, { ActivateController, RetriveAllUsersController } from 
 const router = express.Router();
 
 router.post("/", SignupController);
-router.get("/activate/:token", ActivateController);
+router.get("/activate/:tokenId/:tokenSecret", ActivateController);
 router.get("/all-users", RetriveAllUsersController);
 
 export default router;
