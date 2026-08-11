@@ -5,12 +5,9 @@ import pool from "../config/db.js";
 
 
 export const login = async ({ email, password }) => {
-    console.log(email, password);
     const queryToGetUser = "SELECT * FROM users WHERE email = $1";
     const response = await pool.query(queryToGetUser, [email]);
     const existingUser = response.rows[0];
-
-    console.log(existingUser);
 
     if (!existingUser) throw new ApiError(404, "User doesn't exists");
 
