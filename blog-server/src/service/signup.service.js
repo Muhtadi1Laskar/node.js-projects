@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import pool from "../config/db.js";
-import { generateActivationToken } from "../utils/utils.js";
+import { generateActivationToken, generateUUID } from "../utils/utils.js";
 import { ApiError } from "../../../test-data-tracker/src/utils/error.js";
 
 export const signup = async ({ email, phone, firstName, lastName, passwords, roles }) => {
@@ -11,17 +11,18 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
 
     if (existing) throw new ApiError(409, "User already exists with the given email");
 
-    const plainToken = generateActivationToken();
-    const hashedToken = await bcrypt.hash(plainToken, 10);
+    const tokenId = generateUUID();
+    const tokenSecret = generateActivationToken();
+    const hashedSecret = await bcrypt.hash(tokenSecret, 10);
 
     const encryptedPassword = await bcrypt.hash(passwords, 10);
     const activationExpiryDate = Date.now() + 3600000;
 
     const user = await pool.query(
-        "INSERT INTO users (firstName, lastName, phone, email, roles, passwords, isActive, activationToken, activationTokenExpiry) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-        [firstName, lastName, phone, email, roles, passwords, isActive, hashedToken, activationExpiryDate]
+        "INSERT INTO users (firstName, lastName, phone, email, roles, passwords, isActive, activationTokenId, activationTokenHash, activationTokenExpiry) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
+        [firstName, lastName, phone, email, roles, passwords, isActive, tokenId, hashedSecret, activationExpiryDate]
     );
-    const activationLink = `${process.env.ACTIVATION_URL}/${plainToken}`;
+    const activationLink = `${process.env.ACTIVATION_URL}/${tokenSecret}/${tokenSecret}`;
     const { firstname, lastname } = user.rows[0];
 
     return {
@@ -32,7 +33,18 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
 }
 
 export const activateUser = async (token) => {
-    return;
+    const queryDate = Date.now();
+    const query = 'SELECT * FROM users WHERE activationtokenexpiry > $1';
+    const response = await pool.query(query, [queryDate]);
+    const user = response.rows[0];
+
+    console.log(response.rows);
+
+    if(!user) throw new ApiError(401, "Invalid or expired activation link");
+
+    console.log(user);
+
+    return null;
 }
 
 

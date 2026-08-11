@@ -22,7 +22,7 @@ export async function ActivateController(req, res, next) {
 
 export async function RetriveAllUsersController(req, res, next) {
     try {
-        const response = await getAllUser();
+        const response = await getAllUser(req.params.token);
         successResponse(res, response, 200);
     } catch (error) {
         next(error);

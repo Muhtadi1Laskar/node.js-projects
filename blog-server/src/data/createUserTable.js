@@ -11,7 +11,8 @@ const createUserTable = async () => {
         roles VARCHAR(10) NOT NULL,
         passwords VARCHAR(30) NOT NULL,
         isActive BOOLEAN NOT NULL, 
-        activationToken VARCHAR(255) NOT NULL,
+        activationTokenId VARCHAR(36) NOT NULL,
+        activationTokenHash VARCHAR(255) NOT NULL,
         activationTokenExpiry BIGINT NOT NULL,
         createdAt TIMESTAMP DEFAULT NOW()
 );
