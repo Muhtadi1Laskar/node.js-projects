@@ -14,3 +14,14 @@ CREATE TABLE IF NOT EXISTS users (
     activationTokenExpiry BIGINT NOT NULL,
     createdAt TIMESTAMP DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS posts (
+    postID PRIMARY KEY DEFAULT gen_random_uuid(),
+    userID UUID REFERENCES users(userID),
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    tags TEXT[],
+    createdAt TIMESTAMP DEFAULT NOW(),
+    updatedAt TIMESTAMP,
+    contentHash CHAR(64) NOT NULL,
+);
