@@ -12,7 +12,7 @@ export const verifyJWT = (req, res, next) => {
             }, 401);
         }
 
-        if (!authHeader.startswith("Bearer ")) {
+        if (!authHeader.startsWith("Bearer ")) {
             return errorResponse(res, {
                 message: "Invalid authorization format. Use Bearer <token>"
             }, 401);
