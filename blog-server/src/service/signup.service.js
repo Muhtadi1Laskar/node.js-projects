@@ -38,7 +38,7 @@ export const activateUser = async (tokenId, tokenSecret) => {
     const queryDate = Date.now();
     const query = 'SELECT * FROM users WHERE (activationtokenexpiry > $1 AND activationtokenid = $2)';
     const response = await pool.query(query, [queryDate, tokenId]);
-    const user = response.rows[0];;
+    const user = response.rows[0];
 
     if (!user) throw new ApiError(401, "Invalid or expired activation link");
 
