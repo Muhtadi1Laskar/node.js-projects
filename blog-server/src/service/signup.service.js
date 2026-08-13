@@ -18,7 +18,12 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
     const encryptedPassword = await bcrypt.hash(passwords, 10);
     const activationExpiryDate = Date.now() + 3600000;
 
-    const insertQuery = "INSERT INTO users (firstName, lastName, phone, email, roles, passwords, isActive, activationTokenId, activationTokenHash, activationTokenExpiry) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *";
+    const insertQuery = `
+        INSERT INTO 
+        users (firstName, lastName, phone, email, roles, passwords, isActive, activationTokenId, activationTokenHash, activationTokenExpiry) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+        RETURNING *
+    `;
 
     const user = await pool.query(
         insertQuery,
