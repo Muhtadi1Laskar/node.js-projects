@@ -41,7 +41,10 @@ export const signup = async ({ email, phone, firstName, lastName, passwords, rol
 
 export const activateUser = async (tokenId, tokenSecret) => {
     const queryDate = Date.now();
-    const query = 'SELECT * FROM users WHERE (activationtokenexpiry > $1 AND activationtokenid = $2)';
+    const query = `
+        SELECT * FROM users 
+        WHERE (activationtokenexpiry > $1 AND activationtokenid = $2)
+    `;
     const response = await pool.query(query, [queryDate, tokenId]);
     const user = response.rows[0];
 
@@ -50,7 +53,11 @@ export const activateUser = async (tokenId, tokenSecret) => {
     const isValid = await bcrypt.compare(tokenSecret, user.activationtokenhash);
     if (!isValid) throw new ApiError(400, "Invalid or expired activation link");
 
-    const updateQuery = "UPDATE users SET isactive = $1, activationtokenid = $2, activationtokenhash = $3, activationtokenexpiry = $4 WHERE userid = $5";
+    const updateQuery = `
+        UPDATE users 
+        SET isactive = $1, activationtokenid = $2, activationtokenhash = $3, activationtokenexpiry = $4 
+        WHERE userid = $5
+    `;
     const result = await pool.query(updateQuery, [true, '', '', 0, user.userid]);
 
     if (result.rowCount === 0) throw new ApiError(200, "Failed to activate the user");
