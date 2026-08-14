@@ -32,10 +32,10 @@ export const updatePost = async (userId, postId, updatedData) => {
     const allowedFields = ["title", "content", "tags"];
     const keys = Object.keys(updatedData).filter(key => allowedFields.includes(key));
 
-    if(keys === 0) throw new ApiError(400, "No valid fields provided to update");
+    if (keys === 0) throw new ApiError(400, "No valid fields provided to update");
 
     const fieldsToUpdateStr = keys.map((elem, index) => {
-        return `${elem} = $${index+1}`
+        return `${elem} = $${index + 1}`
     }).join(', ');
 
 
@@ -49,7 +49,29 @@ export const updatePost = async (userId, postId, updatedData) => {
 
     const result = await pool.query(queryForUpdate, [...valuesArray, userId, postId]);
 
-    if(result.rowCount === 0) throw new ApiError(200, "Failed to update the post");
+    if (result.rowCount === 0) throw new ApiError(200, "Failed to update the post");
 
     return "Successfully updated the post";
+}
+
+export const deletePost = async (userId, postId) => {
+    const checkUserQuery = `
+        SELECT
+        EXISTS(SELECT 1 FROM posts WHERE userid = $1 AND postid = $2)
+    `;
+    const response = await pool.query(checkUserQuery, [userId, postId]);
+    const existing = response.rows[0].exists;
+
+    if (!existing) throw new ApiError(409, "Post doesn't exists");
+
+    const deleteQuery = `
+        DELETE 
+        FROM posts 
+        WHERE userid = $1 AND postid = $2;
+    `;
+    const deleteResponse = await pool.query(deleteQuery, [userId, postId]);
+
+    if(deleteResponse.rowCount === 0) throw new ApiError(200, "Failed to delete the post");
+
+    return postId;
 }

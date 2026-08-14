@@ -1,5 +1,5 @@
 import { successResponse } from "../utils/response.js";
-import { createPost, updatePost } from "../service/posts.service.js";
+import { createPost, deletePost, updatePost } from "../service/posts.service.js";
 
 export async function CreatePostController(req, res, next) {
     try {
@@ -27,6 +27,20 @@ export async function UpdatePostController(req, res, next) {
         };
         successResponse(res, responseBody, 200);
     } catch(error) {
+        next(error);
+    }
+}
+
+export async function DeletePostController(req, res, next) {
+    try {
+        const { postId } = req.params;
+        const post = await deletePost(req.userId, postId);
+        const responseBody = {
+            message: "Successfully deleted the post",
+            deletedId: post
+        };
+        successResponse(res, responseBody, 200);
+    } catch (error) {
         next(error);
     }
 }

@@ -5,7 +5,10 @@ import { ApiError } from "../../../test-data-tracker/src/utils/error.js";
 
 export const signup = async ({ email, phone, firstName, lastName, passwords, roles }) => {
     const isActive = false;
-    const query = 'SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)';
+    const query = `
+        SELECT 
+        EXISTS(SELECT 1 FROM users WHERE email = $1)
+    `;
     const res = await pool.query(query, [email]);
     const existing = res.rows[0].exists;
 
