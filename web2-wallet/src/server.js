@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import app from "./app.js";
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = dirname(_filename);
