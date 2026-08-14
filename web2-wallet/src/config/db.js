@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 dotenv.config();
 
-const { POOL } = pkg;
+const { Pool } = pkg;
 
 const pool = new Pool({
     user: process.env.DB_USER,
