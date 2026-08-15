@@ -8,10 +8,12 @@ const createrUserTable = async () => {
         user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         first_name VARCHAR(20) NOT NULL,
         last_name VARCHAR(20) NOT NULL,
-        email VARCHAR(30) NOT NULL UNIQUE
+        email VARCHAR(30) NOT NULL UNIQUE,
+        createdAt TIMESTAMP DEFAULT NOW()
     );
 
     CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+    CREATE INDEX IF NOT EXISTS idx_users_user_id ON users(user_id);
     `;
 
     try {

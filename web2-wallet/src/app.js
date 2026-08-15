@@ -5,6 +5,7 @@ import morgan from "morgan";
 import router from "./routes/index.js";
 import createUserTable from "./data/createUserTable.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import createAccountTable from "./data/createAccountTable.js";
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use("/api", router);
 app.use(errorHandler);
 
 createUserTable();
+createAccountTable();
 
 export default app;
