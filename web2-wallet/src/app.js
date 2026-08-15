@@ -6,6 +6,7 @@ import router from "./routes/index.js";
 import createUserTable from "./data/createUserTable.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import createAccountTable from "./data/createAccountTable.js";
+import createTransferTable from "./data/createTransferTable.js";
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use(errorHandler);
 
 createUserTable();
 createAccountTable();
+createTransferTable();
 
 export default app;
