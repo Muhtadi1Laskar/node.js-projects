@@ -6,8 +6,8 @@ const createTransferTable = async () => {
 
         CREATE TABLE IF NOT EXISTS transfers (
             transfer_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            from_account_id UUID REFERENCES accounts(account_id),
-            to_account_id UUID REFERENCES accounts(account_id),
+            sender_account_id UUID REFERENCES accounts(account_id),
+            receiver_account_id UUID REFERENCES accounts(account_id),
             amount REAL,
             createdAt TIMESTAMP DEFAULT NOW()
         );
