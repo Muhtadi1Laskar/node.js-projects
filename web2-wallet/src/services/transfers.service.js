@@ -19,8 +19,6 @@ export const createTransfer = async ({ senderUserId, receiverUserId, senderAccou
     const result = await pool.query(queryText, [senderUserId, receiverUserId]);
     const { sender_exists, receiver_exists } = result.rows[0];
 
-    console.log(result.rows[0]);
-
     if (!sender_exists) throw new ApiError(404, "Sender account doesn't exists");
     if (!receiver_exists) throw new ApiError(404, "Receiver account doesn't exists");
 
@@ -28,8 +26,6 @@ export const createTransfer = async ({ senderUserId, receiverUserId, senderAccou
 
     try {
         await client.query('BEGIN');
-
-        console.log("Indside the block");
         
         const sendQuery = 
         `UPDATE accounts

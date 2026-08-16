@@ -17,7 +17,7 @@ const createTransferTable = async () => {
 
     try {
         await pool.query(queryText);
-        console.log("Transfer table created");
+        console.log("\nTransfer table created");
     } catch (error) {
         console.error("Failed to create transfer table", error.message);
         throw error;
