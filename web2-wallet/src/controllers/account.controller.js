@@ -1,4 +1,4 @@
-import { createAccount, updateBalance } from "../services/account.service.js";
+import { checkBalance, createAccount, updateBalance } from "../services/account.service.js";
 import { successResponse } from "../utils/response.js";
 
 
@@ -27,6 +27,19 @@ export const UpdateAccountBalanceController = async (req, res, next) => {
             message: "Successfully updated the balance",
             balance
         };
+        successResponse(res, responseBody, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const CheckAccountBalance = async (req, res, next) => {
+    try {
+        const { userId } = req.params;
+
+        const balance = await checkBalance(userId);
+        
+        const responseBody = balance;
         successResponse(res, responseBody, 200);
     } catch (error) {
         next(error);

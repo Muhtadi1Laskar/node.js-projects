@@ -70,3 +70,22 @@ export const updateBalance = async ({ userId, amount }) => {
 
     return updateBalance.rows[0];
 }
+
+export const checkBalance = async (userId) => {
+    const queryText = `
+        SELECT EXISTS
+        (SELECT 1 FROM accounts WHERE user_id = $1)
+    `;
+    const existsResponse = await pool.query(queryText, [userId]);
+
+    if (!existsResponse.rows[0].exists) {
+        throw new ApiError(404, "Account doesn't exists");
+    }
+
+    const searchQuery = `
+        SELECT * FROM accounts WHERE user_id = $1;
+    `;
+    const searchResult = await pool.query(searchQuery, [userId]);
+
+    return searchResult.rows[0];
+}

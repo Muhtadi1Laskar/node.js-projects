@@ -1,9 +1,10 @@
 import express from "express";
-import { CreateAccountController, UpdateAccountBalanceController } from "../controllers/account.controller.js";
+import { CheckAccountBalance, CreateAccountController, UpdateAccountBalanceController } from "../controllers/account.controller.js";
 
 const router = express.Router();
 
 router.post("/create/:userId", CreateAccountController);
-router.post("/update-balance/:userId", UpdateAccountBalanceController)
+router.post("/update-balance/:userId", UpdateAccountBalanceController);
+router.get("/balance/:userId", CheckAccountBalance);
 
 export default router;
