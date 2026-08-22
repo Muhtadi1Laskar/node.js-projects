@@ -26,9 +26,9 @@ export const createTransfer = async ({ senderUserId, receiverUserId, senderAccou
 
     try {
         await client.query('BEGIN');
-        
-        const sendQuery = 
-        `UPDATE accounts
+
+        const sendQuery =
+            `UPDATE accounts
          SET balance = balance - $1
          WHERE user_id = $2
          AND balance >= $1
@@ -44,8 +44,8 @@ export const createTransfer = async ({ senderUserId, receiverUserId, senderAccou
             throw new ApiError(400, "Insufficient funds or invalid user Id");
         }
 
-        const receiveQuery = 
-        `UPDATE accounts
+        const receiveQuery =
+            `UPDATE accounts
          SET balance = balance + $1
          WHERE user_id = $2
         `;
@@ -84,4 +84,16 @@ export const createTransfer = async ({ senderUserId, receiverUserId, senderAccou
     } finally {
         client.release();
     }
+}
+
+export const retriveTransfers = async (account_id) => {
+    const retriveQuery = `
+        SELECT * 
+        FROM transfers 
+        WHERE sender_account_id = $1;
+    `;
+
+    const response = await pool.query(retriveQuery, [account_id]);
+
+    return response.rows;
 }
