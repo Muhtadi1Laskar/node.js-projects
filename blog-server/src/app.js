@@ -6,6 +6,7 @@ import router from "./routes/index.routes.js";
 import createUserTable from "./data/createUserTable.js";
 import createPostTable from "./data/createPosts.js";
 
+
 const app = express();
 
 app.use(cors());
