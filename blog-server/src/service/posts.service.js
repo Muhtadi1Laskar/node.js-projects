@@ -17,7 +17,6 @@ export const createPost = async ({ title, content, userId, tags }) => {
     );
     const post = databaseResponse.rows[0];
 
-    
     if (!post) throw new ApiError(400, "Failed to create the post");
 
     return {
